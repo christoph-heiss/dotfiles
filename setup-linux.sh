@@ -27,4 +27,6 @@ pacaur --noconfirm --noedit -S \
 
 pacaur -Qs hplib && pacaur -Rns hplib
 
+sudo npm install -g gulp
+
 cp -va files/. $HOME/
