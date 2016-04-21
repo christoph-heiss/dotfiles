@@ -83,4 +83,6 @@ sudo make install
 cd ..
 rm -rf ${PORT_VER}.tar.gz ${PORT_VER}
 
+sudo port install x86_64-elf-binutils x86_64-elf-gcc
+
 cp -va files/. $HOME/
