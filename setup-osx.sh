@@ -69,5 +69,18 @@ npm install -g gulp
 
 echo '/usr/local/bin/bash' | sudo tee /etc/shells
 
+if hash xcode-select > /dev/null; then
+        xcode-select --install
+fi
+
+PORT_VER="MacPorts-2.3.4"
+wget https://distfiles.macports.org/MacPorts/${PORT_VER}.tar.gz
+tar -xf ${PORT_VER}.tar.gz
+cd $PORT_VER
+./configure
+make
+sudo make install
+cd ..
+rm -rf ${PORT_VER}.tar.gz ${PORT_VER}
 
 cp -va files/. $HOME/
