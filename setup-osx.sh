@@ -74,6 +74,7 @@ echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >>
 npm install -g gulp
 
 echo '/usr/local/bin/bash' | sudo tee /etc/shells
+sudo chsh -s /usr/local/bin/bash $USER
 
 if hash xcode-select > /dev/null; then
         xcode-select --install
