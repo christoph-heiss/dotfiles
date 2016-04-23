@@ -23,9 +23,13 @@ pacaur --noconfirm --noedit -S \
           sublime-text-dev intel-ucode cups cups-filters ghostscript \
           ttf-meslo fontconfig vlc libva-vdpau-driver spotify cmake \
           iotop perl-mime-tools perl-net-smtp-ssl perl-authen-sasl \
-          geary nmap
+          geary nmap avahi
 
 pacaur -Qs hplib && pacaur -Rns hplib
+
+# fix avahi
+sudo groupadd -r -g 84 avahi
+sudo useradd -r -u 84 -g avahi -d / -s /bin/false -c avahi avahi
 
 sudo npm install -g gulp
 
