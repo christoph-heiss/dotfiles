@@ -53,6 +53,7 @@ brew cask install wireshark
 brew cask install filezilla
 brew cask install virtualbox virtualbox-extension-pack
 brew cask install vlc
+brew cask install google-chrome
 
 # clean up
 brew cleanup -s --force --prune=0
