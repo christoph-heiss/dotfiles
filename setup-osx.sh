@@ -28,6 +28,10 @@ brew install autoconf autoconf-archive automake cmake
 # shell-related
 brew install bash bash-completion2
 
+# fix qemu install
+brew install glib
+brew link glib
+
 # dev-tools
 brew install cloc lsusb valgrind truncate
 brew install qemu node
