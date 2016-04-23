@@ -77,7 +77,7 @@ echo '/usr/local/bin/bash' | sudo tee /etc/shells
 sudo chsh -s /usr/local/bin/bash $USER
 
 if hash xcode-select > /dev/null; then
-        xcode-select --install
+        xcode-select --install || echo
 fi
 
 PORT_VER="MacPorts-2.3.4"
@@ -90,6 +90,8 @@ sudo make install
 cd ..
 rm -rf ${PORT_VER}.tar.gz ${PORT_VER}
 
+export PATH="/opt/local/bin:$PATH"
+sudo port selfupdate
 sudo port install x86_64-elf-binutils x86_64-elf-gcc
 
 cp -va files/. $HOME/
