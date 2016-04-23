@@ -58,6 +58,7 @@ brew cask install filezilla
 brew cask install virtualbox virtualbox-extension-pack
 brew cask install vlc
 brew cask install google-chrome
+brew cask install dropbox
 
 # clean up
 brew cleanup -s --force --prune=0
