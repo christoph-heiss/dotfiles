@@ -59,6 +59,7 @@ brew cask install virtualbox virtualbox-extension-pack
 brew cask install vlc
 brew cask install google-chrome
 brew cask install dropbox
+brew cask install sublime-text-dev
 
 # clean up
 brew cleanup -s --force --prune=0
