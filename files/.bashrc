@@ -32,7 +32,7 @@ if [[ "`uname`" == Darwin ]]; then
 
 	export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 	export HOMEBREW_GITHUB_API_TOKEN=""
-	[[ -f $(brew --prefix)/etc/bash_completion ]] && . $(brew --prefix)/etc/bash_completion
+	[[ -f $(brew --prefix)/share/bash_completion/bash_completion ]] && . $(brew --prefix)/share/bash_completion/bash_completion
 fi
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
