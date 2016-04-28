@@ -60,6 +60,8 @@ brew cask install vlc
 brew cask install google-chrome
 brew cask install dropbox
 brew cask install sublime-text-dev
+brew cask install flux
+brew cask install hyperdock
 
 # clean up
 brew cleanup -s --force --prune=0
