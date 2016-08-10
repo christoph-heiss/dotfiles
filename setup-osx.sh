@@ -39,8 +39,9 @@ brew install qemu node
 # other tools
 brew install youtube-dl ffmpeg
 brew install unrar p7zip unzip
-brew install nmap ssh-copy-id thefuck sqlite
+brew install nmap ssh-copy-id thefuck
 brew install tree screenfetch cowsay htop
+brew install --with-functions --universal sqlite3
 
 # force-link keg-only formulas
 brew link --force unzip sqlite
