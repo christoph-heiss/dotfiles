@@ -10,6 +10,7 @@ fi
 
 brew tap homebrew/dupes
 brew tap homebrew/versions
+brew tap homebrew/completions
 brew tap caskroom/cask
 brew tap jlhonora/lsusb
 
@@ -27,6 +28,7 @@ brew install autoconf autoconf-archive automake cmake
 
 # shell-related
 brew install bash bash-completion2
+brew install open-completion brew-cask-completion pip-completion
 
 # fix qemu install
 brew install glib
