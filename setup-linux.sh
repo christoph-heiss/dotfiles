@@ -3,7 +3,7 @@
 set -e
 
 # install pacaur
-sudo pacman -S git bash-completion
+sudo pacman -S git bash-completion expac cower yajl
 git clone --depth=1 https://github.com/rmarquis/pacaur
 cd pacaur
 sudo cp pacaur /usr/local/bin/
