@@ -5,17 +5,12 @@ set -e
 # install pacaur
 sudo pacman -S git bash-completion expac cower yajl
 git clone --depth=1 https://github.com/rmarquis/pacaur
-cd pacaur
-sudo cp pacaur /usr/local/bin/
-sudo cp bash.completion /usr/share/bash-completion/completions/pacaur
+sudo cp pacaur/pacaur /usr/local/bin/
+sudo cp pacaur/bash.completion /usr/share/bash-completion/completions/pacaur
 sudo mkdir -p /etc/xdg/pacaur
-sudo cp config /etc/xdg/pacaur/
-cd ..
-rm -rf ./pacaur
+sudo cp pacaur/config /etc/xdg/pacaur/
+rm -rf pacaur
 
-
-# install pacaur requirements
-sudo pacman -S expac 
 
 pacaur --noconfirm --noedit -S \
           scrot thefuck dropbox youtube-dl markdown speedometer htop \
