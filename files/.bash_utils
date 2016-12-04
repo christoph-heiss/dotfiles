@@ -23,6 +23,7 @@ update()
 		brew link --force unzip sqlite
 		brew cleanup --force --prune=0 -s
 		brew cask cleanup --force --prune=0 
+		brew prune
 
 		__update_log ports
 		sudo port -uc selfupdate 

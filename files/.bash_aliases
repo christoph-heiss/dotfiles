@@ -14,9 +14,6 @@ case "`uname`" in
 Darwin )
 	alias ls='ls -G'
 	
-	alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-	alias google-chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-
 	alias md5sum='md5'
 	alias sha1sum='shasum -a 1'
 	alias sha224sum='shasum -a 224'
@@ -27,6 +24,7 @@ Darwin )
 	alias strace='sudo dtruss'
 	alias ldd='otool -L'
 	alias lsblk='diskutil list'
+	alias objdump='otool -tVC'
 
 	alias shot='screencapture -x -T 5 ~/Dropbox/screenshots/`date +%y-%m-%d_%H:%M:%S`.png'
 	;;
