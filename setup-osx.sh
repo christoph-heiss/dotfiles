@@ -63,8 +63,7 @@ brew cask install spotify vlc
 brew cask install google-chrome
 brew cask install dropbox
 brew cask install sublime-text-dev
-brew cask install flux
-brew cask install hyperdock
+brew cask install hammerspoon
 
 # clean up
 brew cleanup -s --force --prune=0
@@ -100,4 +99,8 @@ export PATH="/opt/local/bin:$PATH"
 sudo port selfupdate
 sudo port install x86_64-elf-binutils x86_64-elf-gcc
 
+mkdir -p ~/.hammerspoon
 cp -va files/. $HOME/
+
+cd ~/.hammerspoon
+git clone https://github.com/nathancahill/anycomplete.git
