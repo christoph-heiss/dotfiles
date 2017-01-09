@@ -99,6 +99,9 @@ export PATH="/opt/local/bin:$PATH"
 sudo port selfupdate
 sudo port install x86_64-elf-binutils x86_64-elf-gcc
 
+# install rustc/cargo using rustup
+curl https://sh.rustup.rs -sSf | sh
+
 
 sudo pmset -a sms 0
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
