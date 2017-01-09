@@ -70,7 +70,7 @@ brew cleanup -s --force --prune=0
 
 
 # update pip
-pip3 install --upgrade pip setuptools
+pip3 install --upgrade setuptools
 
 # make python packages from brew importable.
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
@@ -98,6 +98,13 @@ rm -rf ${PORT_VER}.tar.gz ${PORT_VER}
 export PATH="/opt/local/bin:$PATH"
 sudo port selfupdate
 sudo port install x86_64-elf-binutils x86_64-elf-gcc
+
+
+sudo pmset -a sms 0
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
 
 mkdir -p ~/.hammerspoon
 cp -va files/. $HOME/
