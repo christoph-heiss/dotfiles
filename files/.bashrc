@@ -10,8 +10,6 @@
 export PATH="$HOME/.cargo/bin:$HOME/local/bin:$PATH"
 PS1="\[${C_BOLD}\][\[${C_RED}\]\u\[${C_WHITE}\]@\[${C_GREEN}\]\h \[${C_BLUE}\]\w\[${C_WHITE}\]]\\$ \[${C_RESET}\]"
 
-complete -cf sudo man
-
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s cdspell
