@@ -102,6 +102,8 @@ sudo port install x86_64-elf-binutils x86_64-elf-gcc
 # install rustc/cargo using rustup
 curl https://sh.rustup.rs -sSf | sh
 
+rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+
 
 sudo pmset -a sms 0
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true

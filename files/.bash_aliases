@@ -9,6 +9,8 @@ alias sudo='sudo '
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
 
+alias rusti='rustup run nightly-2016-08-01 rusti'
+
 
 case "`uname`" in
 Darwin )

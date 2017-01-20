@@ -27,7 +27,6 @@ export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig"
 export GEM_HOME="$HOME/.gems"
 
 if [[ "`uname`" == Darwin ]]; then
-
 	export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 	export HOMEBREW_GITHUB_API_TOKEN=""
 	[[ -f $(brew --prefix)/share/bash-completion/bash_completion ]] && . $(brew --prefix)/share/bash-completion/bash_completion
@@ -35,3 +34,4 @@ fi
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_utils ]] && . ~/.bash_utils
+[[ -d ~/.bash_completions.d ]] && for f in ~/.bash_completions.d/*; do . "$f"; done
