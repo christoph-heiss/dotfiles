@@ -19,7 +19,7 @@ function toggle_window_state(state)
 		frame_cache[id] = nil
 	else
 		frame_cache[id] = win:frame()
-	toggle_window_state(state)
+		win:moveToUnit(state)
 	end
 end
 
@@ -125,8 +125,7 @@ hs.timer.doAfter(1, function()
 		local tz_offset = tonumber(string.sub(os.date('%z'), 1, -3))
 		for i, v in pairs({'sunrise', 'sunset'}) do
 			redshift_times[v] = os.date('%H:%M',
-				hs.location[v](location.latitude, location.longitude, tz_offset)
-			)
+				hs.location[v](location.latitude, location.longitude, tz_offset))
 		end
 	end
 
