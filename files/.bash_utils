@@ -24,11 +24,6 @@ update()
 		brew cleanup --force --prune=0 -s
 		brew cask cleanup --force --prune=0 
 		brew prune
-
-		__update_log ports
-		sudo port -uc selfupdate 
-		sudo port -uc upgrade outdated
-		sudo port clean --all installed
 		;;
 
 	Linux )

@@ -85,20 +85,6 @@ if hash xcode-select > /dev/null; then
         xcode-select --install || echo
 fi
 
-PORT_VER="MacPorts-2.3.4"
-wget https://distfiles.macports.org/MacPorts/${PORT_VER}.tar.gz
-tar -xf ${PORT_VER}.tar.gz
-cd $PORT_VER
-./configure
-make
-sudo make install
-cd ..
-rm -rf ${PORT_VER}.tar.gz ${PORT_VER}
-
-export PATH="/opt/local/bin:$PATH"
-sudo port selfupdate
-sudo port install x86_64-elf-binutils x86_64-elf-gcc
-
 # install rustc/cargo using rustup
 curl https://sh.rustup.rs -sSf | sh
 
