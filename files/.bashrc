@@ -7,7 +7,7 @@
 
 [[ -f ~/.bash_colors ]] && . ~/.bash_colors
 
-export PATH="$HOME/.cargo/bin:$HOME/local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/local/bin:$HOME/.gems/bin:$PATH"
 PS1="\[${C_BOLD}\][\[${C_RED}\]\u\[${C_WHITE}\]@\[${C_GREEN}\]\h \[${C_BLUE}\]\w\[${C_WHITE}\]]\\$ \[${C_RESET}\]"
 
 shopt -s checkwinsize
