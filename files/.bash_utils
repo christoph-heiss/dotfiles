@@ -44,6 +44,11 @@ update()
 		__update_log "gems"
 		gem update
 	fi
+
+	if hash rustup 2> /dev/null; then
+		__update_log rust
+		rustup update
+	fi
 }
 
 
