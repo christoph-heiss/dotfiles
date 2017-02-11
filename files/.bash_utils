@@ -34,14 +34,12 @@ update()
 	esac
 
 	if hash npm 2> /dev/null; then
-
 		__update_log "npm packages"
 		npm update -g
 	fi
 
 	if hash gem 2> /dev/null; then
-
-		__update_log "gems"
+		__update_log gems
 		gem update
 	fi
 
