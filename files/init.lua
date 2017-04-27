@@ -1,6 +1,6 @@
 -- Use anycomplete
 local anycomplete = require "anycomplete/anycomplete"
-anycomplete.registerDefaultBindings()
+anycomplete.registerDefaultBindings({'ctrl', 'cmd', 'alt'}, 'K')
 
 
 -- Hyperdock-like shortcuts
@@ -75,12 +75,3 @@ set_caffeine_menubar(hs.caffeinate.get('displayIdle'))
 caffeine:setClickCallback(toggle_caffeine_menubar)
 
 hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, 'l', toggle_caffeine_menubar)
-
-
-local app_watcher = hs.application.watcher.new(function(app_name, even_type, app)
-	if (event_type == hs.application.watcher.activated) then
-		if (app_name == 'Finder') then
-			app:selectMenuItem({'Window', 'Bring All to Front'})
-		end
-	end
-end)
