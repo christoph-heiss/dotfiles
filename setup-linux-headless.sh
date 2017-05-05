@@ -2,6 +2,7 @@
 
 set -e
 
+
 # install pacaur
 sudo pacman -Syu --noconfirm
 sudo pacman --noconfirm -S expac yajl
@@ -18,14 +19,9 @@ gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 
 pacaur -Syu --aur --noconfirm
 pacaur --noconfirm --noedit -S \
-          scrot thefuck dropbox youtube-dl markdown speedometer htop \
-          nodejs npm texlive-most gimp screenfetch geary nmap avahi \
-          sublime-text-dev intel-ucode cups cups-filters ghostscript \
-          ttf-meslo fontconfig vlc libva-vdpau-driver spotify cmake \
-          iotop perl-mime-tools perl-net-smtp-ssl perl-authen-sasl \
-          qemu bash-completion cower
-
-pacaur -Qs hplib && pacaur -Rns hplib
+	thefuck youtube-dl markdown speedometer htop nodejs npm \
+	nmap avahi intel-ucode cmake iotop perl-mime-tools \
+	perl-net-smtp-ssl perl-authen-sasl bash-completion cower
 
 # fix avahi
 sudo groupadd -r -g 84 avahi || true
