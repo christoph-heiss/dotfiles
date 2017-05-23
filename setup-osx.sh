@@ -58,7 +58,6 @@ brew cask install qlmarkdown quicklook-json
 brew cask install blender
 brew cask install wireshark
 brew cask install filezilla
-brew cask install virtualbox virtualbox-extension-pack
 brew cask install spotify vlc
 brew cask install google-chrome
 brew cask install dropbox
