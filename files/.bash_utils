@@ -22,7 +22,7 @@ update()
 		brew upgrade
 		brew link --force unzip sqlite
 		brew cleanup --force --prune=0 -s
-		brew cask cleanup --force --prune=0 
+		brew cask cleanup
 		brew prune
 		;;
 
