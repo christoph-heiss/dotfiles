@@ -44,9 +44,10 @@ brew install unrar p7zip unzip
 brew install nmap ssh-copy-id thefuck
 brew install tree screenfetch cowsay htop
 brew install --with-functions --universal sqlite3
+brew install --with-nghttp2 --with-libssh2 curl
 
 # force-link keg-only formulas
-brew link --force unzip sqlite
+brew link --force unzip sqlite curl
 
 
 # brew cask
