@@ -29,6 +29,7 @@ Darwin )
 	alias objdump='otool -tVC'
 
 	alias shot='screencapture -x -T 5 ~/Dropbox/screenshots/`date +%y-%m-%d_%H:%M:%S`.png'
+	alias htop='htop -u $(whoami)'
 	;;
 
 Linux )

@@ -96,6 +96,15 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+# Automatically loads keys into ssh-agent
+mkdir -p ~/.ssh
+cat >> ~/.ssh/config <<EOF
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa
+EOF
+
 
 mkdir -p ~/.hammerspoon
 cp -va files/. $HOME/
