@@ -15,4 +15,7 @@ mkdir -p files/
 cp ~/.bashrc files/
 cp ~/.bash_{aliases,colors,profile,utils} files/
 cp ~/.gitconfig files/
-cp ~/.hammerspoon/init.lua files/
+
+if [[ "`uname`" == Darwin ]]; then
+	cp ~/.hammerspoon/init.lua files/
+fi
