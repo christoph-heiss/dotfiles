@@ -19,9 +19,9 @@ gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 
 pacaur -Syu --aur --noconfirm
 pacaur --noconfirm --noedit -S \
-	thefuck youtube-dl markdown speedometer htop nodejs npm \
-	nmap avahi intel-ucode cmake iotop perl-mime-tools \
-	perl-net-smtp-ssl perl-authen-sasl bash-completion cower
+	thefuck speedometer htop nodejs npm nmap avahi intel-ucode \
+	cmake iotop perl-mime-tools perl-net-smtp-ssl perl-authen-sasl \
+	bash-completion cower
 
 # fix avahi
 sudo groupadd -r -g 84 avahi || true
