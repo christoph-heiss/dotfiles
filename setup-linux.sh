@@ -27,10 +27,6 @@ pacaur --noconfirm --noedit -S \
 
 pacaur -Qs hplib && pacaur -Rns hplib
 
-# fix avahi
-sudo groupadd -r -g 84 avahi || true
-sudo useradd -r -u 84 -g avahi -d / -s /bin/false -c avahi avahi || true
-
 sudo npm install -g gulp
 
 cp -va files/.bash_{aliases,colors,profile,utils} files/.bashrc files/.gitconfig $HOME/

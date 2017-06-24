@@ -23,10 +23,6 @@ pacaur --noconfirm --noedit -S \
 	cmake iotop perl-mime-tools perl-net-smtp-ssl perl-authen-sasl \
 	bash-completion cower
 
-# fix avahi
-sudo groupadd -r -g 84 avahi || true
-sudo useradd -r -u 84 -g avahi -d / -s /bin/false -c avahi avahi || true
-
 sudo npm install -g gulp
 
 cp -va files/.bash_{aliases,colors,profile,utils} files/.bashrc files/.gitconfig $HOME/
