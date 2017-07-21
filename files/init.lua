@@ -67,7 +67,7 @@ function set_caffeine_menubar(state)
 	caffeine:setTitle(state and 'W' or 'S')
 end
 
-function toggle_caffeine_menubar(state)
+function toggle_caffeine_menubar()
 	set_caffeine_menubar(hs.caffeinate.toggle('displayIdle'))
 end
 
@@ -75,3 +75,19 @@ set_caffeine_menubar(hs.caffeinate.get('displayIdle'))
 caffeine:setClickCallback(toggle_caffeine_menubar)
 
 hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, 'l', toggle_caffeine_menubar)
+
+
+local awake_by_spotify = false
+hs.application.watcher.new(function(name, type, app)
+	if name == 'Spotify' then
+		if type == hs.application.watcher.launched then
+			awake_by_spotify = true
+			toggle_caffeine_menubar()
+		end
+
+		if type == hs.application.watcher.terminated and awake_by_spotify then
+			awake_by_spotify = false
+			toggle_caffeine_menubar()
+		end
+	end
+end):start()
