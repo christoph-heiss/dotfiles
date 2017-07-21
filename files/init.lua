@@ -14,11 +14,11 @@ function toggle_window_state(state)
 	local win = hs.window.focusedWindow()
 	local id = win:id()
 
-	if frame_cache[id] then
-		win:setFrame(frame_cache[id])
-		frame_cache[id] = nil
+	if frame_cache[id] and frame_cache[id][state] then
+		win:setFrame(frame_cache[id][state])
 	else
-		frame_cache[id] = win:frame()
+		frame_cache[id] = {}
+		frame_cache[id][state] = win:frame()
 		win:moveToUnit(state)
 	end
 end
