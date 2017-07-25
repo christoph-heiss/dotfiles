@@ -28,7 +28,7 @@ update()
 
 	Linux )
 		__update_log packages
-		pacaur -Syu
+		pacaur -Syu --noconfirm
 		;;
 
 	esac
