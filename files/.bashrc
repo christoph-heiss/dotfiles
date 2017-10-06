@@ -34,3 +34,9 @@ fi
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_utils ]] && . ~/.bash_utils
 [[ -d ~/.bash_completions.d ]] && for f in ~/.bash_completions.d/*; do . "$f"; done
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export PATH="$HOME/.yarn/bin:$PATH"

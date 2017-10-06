@@ -33,9 +33,9 @@ update()
 
 	esac
 
-	if hash npm 2> /dev/null; then
-		__update_log "npm packages"
-		npm update -g
+	if hash yarn 2> /dev/null; then
+		__update_log "node packages"
+		yarn global upgrade
 	fi
 
 	if hash gem 2> /dev/null; then
