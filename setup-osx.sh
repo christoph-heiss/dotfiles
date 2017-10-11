@@ -64,6 +64,8 @@ brew cask install google-chrome
 brew cask install dropbox
 brew cask install sublime-text-dev
 brew cask install hammerspoon
+brew cask install blockblock knockknock
+brew cask install little-snitch
 
 # clean up
 brew cleanup -s --force --prune=0
@@ -111,3 +113,10 @@ cp -va files/. $HOME/
 
 cd ~/.hammerspoon
 git clone https://github.com/nathancahill/anycomplete.git
+
+cat <<EOF
+
+Do not forget to complete the install of Little Snitch by mounting
+'/usr/local/Caskroom/little-snitch/4.0.3/LittleSnitch-4.0.3.dmg' and
+running 'Little Snitch Installer.app'!
+EOF
