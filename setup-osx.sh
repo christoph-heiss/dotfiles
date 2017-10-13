@@ -89,6 +89,8 @@ fi
 # install rustc/cargo using rustup
 curl https://sh.rustup.rs -sSf | sh
 
+source $HOME/.cargo/env
+rustup install nightly-2016-08-01
 rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
 
 
