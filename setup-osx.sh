@@ -32,8 +32,8 @@ brew install glib
 brew link glib
 
 # dev-tools
-brew install cloc lsusb valgrind truncate
-brew install qemu node
+brew install cloc lsusb truncate
+brew install qemu
 
 # other tools
 brew install youtube-dl ffmpeg colordiff
@@ -48,7 +48,6 @@ brew link --force unzip sqlite curl
 
 
 # brew cask
-brew install brew-cask
 brew tap caskroom/versions
 
 brew cask install iterm2-beta
@@ -61,8 +60,6 @@ brew cask install google-chrome
 brew cask install dropbox
 brew cask install sublime-text-dev
 brew cask install hammerspoon
-brew cask install blockblock knockknock
-brew cask install little-snitch
 brew cask install insomniax
 brew cask install franz
 
