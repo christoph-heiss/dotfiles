@@ -8,9 +8,6 @@ if ! which brew > /dev/null; then
 fi
 
 
-brew tap homebrew/dupes
-brew tap homebrew/versions
-brew tap homebrew/completions
 brew tap caskroom/cask
 brew tap jlhonora/lsusb
 
