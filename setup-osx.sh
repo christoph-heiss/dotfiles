@@ -74,7 +74,10 @@ pip3 install --upgrade setuptools
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
-npm install -g gulp
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+nvm install node
+~/.yarn/bin/yarn global add gulp
 
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
 sudo chsh -s /usr/local/bin/bash $USER
