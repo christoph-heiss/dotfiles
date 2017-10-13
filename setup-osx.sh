@@ -63,6 +63,8 @@ brew cask install sublime-text-dev
 brew cask install hammerspoon
 brew cask install blockblock knockknock
 brew cask install little-snitch
+brew cask install insomniax
+brew cask install franz
 
 # clean up
 brew cleanup -s --force --prune=0
