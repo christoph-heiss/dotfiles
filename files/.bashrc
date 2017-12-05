@@ -1,6 +1,6 @@
 #
 # ~/.bashrc
-# 
+#
 
 # If not running interactively, do nothing
 [[ $- != *i* ]] && return
@@ -40,3 +40,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

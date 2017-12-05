@@ -115,9 +115,8 @@ cp -va files/. $HOME/
 cd ~/.hammerspoon
 git clone https://github.com/nathancahill/anycomplete.git
 
-cat <<EOF
 
-Do not forget to complete the install of Little Snitch by mounting
-'/usr/local/Caskroom/little-snitch/4.0.3/LittleSnitch-4.0.3.dmg' and
-running 'Little Snitch Installer.app'!
-EOF
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+. ~/.bashrc
+base16_default-dark
