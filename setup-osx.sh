@@ -112,10 +112,7 @@ EOF
 mkdir -p ~/.hammerspoon
 cp -va files/. $HOME/
 
-cd ~/.hammerspoon
-git clone https://github.com/nathancahill/anycomplete.git
-
-
+git clone https://github.com/nathancahill/anycomplete.git ~/.hammerspoon/anycomplete
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 git clone --recursive https://github.com/christoph-heiss/vimfiles.git ~/.vim
 
