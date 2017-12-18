@@ -117,6 +117,9 @@ git clone https://github.com/nathancahill/anycomplete.git
 
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+git clone --recursive https://github.com/christoph-heiss/vimfiles.git ~/.vim
+
+ln -s ~/.vim/vimrc ~/.vimrc
 
 . ~/.bashrc
-base16_default-dark
+base16_ocean
