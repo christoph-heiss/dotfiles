@@ -21,7 +21,7 @@ export HISTFILESIZE=${HISTSIZE}
 
 export LC_ALL="en_US.UTF-8"
 
-export EDITOR="nano"
+export EDITOR="vim"
 export GIT_EDITOR="$EDITOR"
 export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig"
 export GEM_HOME="$HOME/.gems"
