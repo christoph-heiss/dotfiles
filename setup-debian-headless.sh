@@ -3,9 +3,6 @@
 set -e
 
 
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 sudo apt-get install -y curl wget apt-transport-https dirmngr
 
 sudo tee /etc/apt/sources.list <<EOF
@@ -17,16 +14,16 @@ EOF
 sudo apt-get update
 sudo apt-get dist-upgrade -y
 sudo apt-get install -y \
-        wget thefuck speedometer htop nodejs nmap avahi-daemon cmake iotop bash-completion
-
-wget "http://ftp.debian.org/debian/pool/main/n/npm/npm_1.4.21+ds-2_all.deb"
-sudo dpkg -i --force-depends npm_1.4.21+ds-2_all.deb
-sudo apt-get install -f -y
-rm npm_1.4.21+ds-2_all.deb
+        wget thefuck speedometer htop nmap avahi-daemon cmake iotop bash-completion \
+        vim tmux
 
 sudo apt-get autoremove -y
 sudo apt-get autoclean
 
-sudo npm install -g gulp
 
-cp -va files/.bash_{aliases,colors,profile,utils} files/.bashrc files/.gitconfig $HOME/
+git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim
+ln -s $HOME/.vim/vimrc $HOME/.vimrc
+
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+cp -va files/.bash_{aliases,colors,profile,utils} files/.{bashrc,gitconfig,tmux.conf} $HOME/
