@@ -16,6 +16,7 @@ cp ~/.bashrc files/
 cp ~/.bash_{aliases,colors,profile,utils} files/
 cp ~/.gitconfig files/
 cp ~/.tmux.conf files/
+cp ~/.alacritty.yml files/
 
 if [[ "`uname`" == Darwin ]]; then
 	cp ~/.hammerspoon/init.lua files/

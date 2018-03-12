@@ -36,8 +36,13 @@ fi
 [[ -d ~/.bash_completions.d ]] && for f in ~/.bash_completions.d/*; do . "$f"; done
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
 export BASE16_SHELL=$HOME/.config/base16-shell
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+if [[ "`uname`" == Linux ]]; then
+        export QT_STYLE_OVERRIDE=gtk
+        export QT_SELECT=qt5
+fi
