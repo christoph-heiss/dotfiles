@@ -15,6 +15,9 @@ shopt -s histappend
 shopt -s cdspell
 shopt -s globstar
 
+# Do not freeze terminal on Ctrl-S
+stty -ixon
+
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
