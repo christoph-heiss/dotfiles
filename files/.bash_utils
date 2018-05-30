@@ -16,7 +16,7 @@ update()
 	Darwin )
 		__update_log "OS X"
 		sudo softwareupdate -i -a || exit
-	
+
 		__update_log brew
 		brew update
 		brew upgrade
@@ -28,7 +28,7 @@ update()
 
 	Linux )
 		__update_log packages
-		pacaur -Syu --noconfirm
+		yay -Syu --sudoloop --answeredit None
 		;;
 
 	esac

@@ -1,3 +1,6 @@
 [user]
 	name = Christoph Heiss
 	email = me@christoph-heiss.me
+	signingKey = 642FF75046E6C3CA
+[commit]
+	gpgsign = true
