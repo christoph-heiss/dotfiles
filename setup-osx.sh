@@ -50,7 +50,6 @@ brew link --force unzip sqlite curl
 # brew cask
 brew tap caskroom/versions
 
-brew cask install iterm2-beta
 brew cask install qlmarkdown quicklook-json
 brew cask install blender
 brew cask install wireshark
@@ -58,8 +57,6 @@ brew cask install filezilla
 brew cask install spotify vlc
 brew cask install google-chrome
 brew cask install dropbox
-brew cask install sublime-text-dev
-brew cask install hammerspoon
 brew cask install insomniax
 brew cask install franz
 
@@ -74,7 +71,7 @@ pip3 install --upgrade setuptools
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 curl -o- -L https://yarnpkg.com/install.sh | bash
 nvm install node
 ~/.yarn/bin/yarn global add gulp
@@ -90,8 +87,14 @@ fi
 curl https://sh.rustup.rs -sSf | sh
 
 source $HOME/.cargo/env
-rustup install nightly-2016-08-01
-rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+rustup default stable
+
+mkdir ~/git
+git clone git@github.com:jwilm/alacritty.git ~/git/alacritty
+cd ~/git/alacritty
+make app
+
+cp -r target/release/osx/Alacritty.app /Applications/
 
 
 sudo pmset -a sms 0
@@ -109,10 +112,8 @@ Host *
 EOF
 
 
-mkdir -p ~/.hammerspoon
 cp -va files/. $HOME/
 
-git clone https://github.com/nathancahill/anycomplete.git ~/.hammerspoon/anycomplete
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 git clone --recursive https://github.com/christoph-heiss/vimfiles.git ~/.vim
 
