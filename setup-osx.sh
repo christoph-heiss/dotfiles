@@ -59,6 +59,7 @@ brew cask install google-chrome
 brew cask install dropbox
 brew cask install insomniax
 brew cask install franz
+brew cask install bettertouchtool
 
 # clean up
 brew cleanup -s --force --prune=0
