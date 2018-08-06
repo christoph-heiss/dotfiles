@@ -2,22 +2,17 @@
 
 set -e
 
-sudo pacman -S pacaur
+WITH_GUI=y
 
-pacaur -Syu --aur --noconfirm
-pacaur --noconfirm --noedit -S \
-          scrot thefuck dropbox markdown speedometer htop nodejs yarn \
-          texlive-most gimp screenfetch geary nmap avahi google-chrome \
-          intel-ucode cups cups-filters ghostscript ttf-meslo fontconfig \
-          vlc spotify cmake iotop perl-mime-tools perl-net-smtp-ssl \
-          perl-authen-sasl qemu qemu-arch-extra bash-completion \
-          xf86-input-mtrack-git vim tmux
+source ./common.sh
 
 
-pacaur -Qs hplib && pacaur -Rns hplib
-pacaur -Scc
+arch_generic_pre
 
-yarn global add gulp
+yay -S $YAY_OPTIONS --needed xf86-input-mtrack-git
+
+generic_pre
+
 
 # Enable touchpad
 sudo gpasswd -a christoph input
@@ -40,12 +35,8 @@ sudo bash -c 'cat > /usr/local/sbin/setup-machine.sh <<EOF
 xrandr --output eDP1 --scale 1.5x1.5 --panning 3840x2400
 EOF'
 
-sudo chmod +x /usr/loca/sbin/setup-machine.sh
+sudo chmod +x /usr/local/sbin/setup-machine.sh
 
 
-git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim
-ln -s $HOME/.vim/vimrc $HOME/.vimrc
-
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-
-cp -va files/.bash_{aliases,colors,profile,utils} files/.{bashrc,gitconfig,tmux.conf} $HOME/
+arch_generic_post
+generic_post

@@ -3,15 +3,12 @@
 #
 
 
-__update_log()
-{
+__update_log() {
 	printf "\n${C_GREEN}---> Updating %s${C_RESET}\n" "$1"
 }
 
 
-update()
-{
-
+update() {
 	case "`uname`" in
 	Darwin )
 		__update_log "OS X"
@@ -28,7 +25,7 @@ update()
 
 	Linux )
 		__update_log packages
-		yay -Syu --sudoloop --answeredit None
+		yay -Syu --sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu
 		;;
 
 	esac
@@ -50,7 +47,6 @@ update()
 }
 
 
-weather()
-{
+weather() {
 	curl -4 wttr.in
 }

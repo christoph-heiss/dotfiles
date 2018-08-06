@@ -18,6 +18,3 @@ cp ~/.gitconfig files/
 cp ~/.tmux.conf files/
 cp ~/.alacritty.yml files/
 
-if [[ "`uname`" == Darwin ]]; then
-	cp ~/.hammerspoon/init.lua files/
-fi

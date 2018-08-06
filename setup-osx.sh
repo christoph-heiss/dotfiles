@@ -2,6 +2,11 @@
 
 set -e
 
+WITH_GUI=y
+
+source ./common.sh
+
+
 if ! which brew > /dev/null; then
 	# install brew
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -75,7 +80,8 @@ echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >>
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 curl -o- -L https://yarnpkg.com/install.sh | bash
 nvm install node
-~/.yarn/bin/yarn global add gulp
+
+generic_pre
 
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
 sudo chsh -s /usr/local/bin/bash $USER
@@ -113,12 +119,4 @@ Host *
 EOF
 
 
-cp -va files/. $HOME/
-
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-git clone --recursive https://github.com/christoph-heiss/vimfiles.git ~/.vim
-
-ln -s ~/.vim/vimrc ~/.vimrc
-
-. ~/.bashrc
-base16_ocean
+generic_post
