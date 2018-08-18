@@ -17,16 +17,16 @@ arch_generic_pre() {
         pushd $yay_tmpdir
         git clone https://aur.archlinux.org/yay.git
         cd yay
-        makepkg -si
+        makepkg -si --noconfirm
         popd
 
         # update and install packages
         yay -Syu $YAY_OPTIONS
 
         yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GENERIC
-        [[ $WITH_GUI == y ]] && yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI
+        [[ $WITH_GUI == y ]] && yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI || true
 
-        yay -Qs hplib && yay -Rns hplib
+        yay -Qs hplib && yay -Rns hplib || true
 }
 
 
@@ -43,14 +43,11 @@ generic_pre() {
 
 
 generic_post() {
-        git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim
-        git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+        [[ ! -d $HOME/.vim ]] && git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim || true
+        [[ ! -d $HOME/.config/base16-shell ]] && git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell || true
 
-        ln -s $HOME/.vim/vimrc $HOME/.vimrc
+        ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 
         cp -va files/.bash_{aliases,colors,profile,utils} files/.{bashrc,gitconfig} $HOME/
-        [[ $WITH_GUI == y ]] && cp -va files/.{tmux.conf,alacritty.yml} $HOME/
-
-        source ~/.bashrc
-        base16_ocean
+        [[ $WITH_GUI == y ]] && cp -va files/.{tmux.conf,alacritty.yml} $HOME/ || true
 }

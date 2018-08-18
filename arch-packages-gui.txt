@@ -11,6 +11,8 @@ google-chrome
 libreoffice-fresh
 libva-vdpau-driver
 python-opengl
+qemu
+qemu-arch-extra
 screenfetch
 spotify
 sushi
