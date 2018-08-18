@@ -39,6 +39,7 @@ brew link glib
 # dev-tools
 brew install cloc lsusb truncate
 brew install qemu
+brew install hub
 
 # other tools
 brew install youtube-dl ffmpeg colordiff
