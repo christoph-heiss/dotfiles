@@ -9,8 +9,8 @@ ARCH_PACKAGE_LIST_GUI=arch-packages-gui.txt
 
 
 arch_generic_pre() {
-        sed -i 's/^#Color$/Color/' /etc/pacman.conf
-        sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$((`nproc` * 3 / 2))\"/g" /etc/makepkg.conf
+        sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+        sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$((`nproc` * 3 / 2))\"/g" /etc/makepkg.conf
 
         # install yay first
         yay_tmpdir=$(mktemp -d)
