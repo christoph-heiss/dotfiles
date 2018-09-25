@@ -1,5 +1,3 @@
-alacritty-git
-alacritty-terminfo-git
 cups
 cups-filters
 dropbox
@@ -10,6 +8,7 @@ gimp
 google-chrome
 libreoffice-fresh
 libva-vdpau-driver
+powerline-fonts
 python-opengl
 qemu
 qemu-arch-extra
@@ -18,6 +17,7 @@ spotify
 sushi
 texlive-most
 tmux
+tmux-mem-cpu-load-git
 ttf-meslo
 vlc
 youtube-dl

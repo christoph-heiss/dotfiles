@@ -8,8 +8,8 @@ source ./common.sh
 
 
 if ! which brew > /dev/null; then
-	# install brew
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    # install brew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 
@@ -78,10 +78,6 @@ pip3 install --upgrade setuptools
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-curl -o- -L https://yarnpkg.com/install.sh | bash
-nvm install node
-
 generic_pre
 
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
@@ -91,19 +87,11 @@ if hash xcode-select > /dev/null; then
         xcode-select --install || echo
 fi
 
-# install rustc/cargo using rustup
+# Install rust[up] and cargo
 curl https://sh.rustup.rs -sSf | sh
 
 source $HOME/.cargo/env
 rustup default stable
-
-mkdir ~/git
-git clone git@github.com:jwilm/alacritty.git ~/git/alacritty
-cd ~/git/alacritty
-make app
-
-cp -r target/release/osx/Alacritty.app /Applications/
-
 
 sudo pmset -a sms 0
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true

@@ -22,6 +22,7 @@ perl-authen-sasl
 perl-mime-tools
 perl-net-smtp-ssl
 python-capstone
+rustup
 sleuthkit
 speedometer
 squashfs-tools
@@ -33,3 +34,7 @@ vim
 xz
 yarn
 z
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting

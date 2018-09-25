@@ -1,0 +1,16 @@
+#
+# ~/.zsh_platform for darwin
+#
+
+
+update_platform() {
+    sudo softwareupdate -i -a || true
+
+    __update_log 'brew packages'
+    brew update
+    brew upgrade
+    brew link --force unzip sqlite
+    brew cleanup --prune=0 -s
+    rm -rfv $(brew --cache)
+    brew prune
+}

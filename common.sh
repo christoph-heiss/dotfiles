@@ -1,53 +1,38 @@
 #!/usr/bin/env bash
 
 set -e
+set -u
 
 
-YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
-ARCH_PACKAGE_LIST_GENERIC=arch-packages-generic.txt
-ARCH_PACKAGE_LIST_GUI=arch-packages-gui.txt
+[[ ! -d $HOME/.vim ]] && git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim || true
+ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+
+[[ ! -d $HOME/.config/base16-shell ]] && git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell || true
+[[ ! -d $HOME/.nvm ]] && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash || true
+
+source $HOME/.nvm/nvm.sh
+nvm install node
+
+[[ ! -d $HOME/.oh-my-zsh ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+cp -va files/.{zshrc,gitconfig,tmux.conf} $HOME/
+
+touch $HOME/.z
+
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+[[ ! -d $ZSH_CUSTOM/themes/spaceship-prompt ]] && git clone https://github.com/denysdovhan/spaceship-prompt.git $ZSH_CUSTOM/themes/spaceship-prompt || true
+ln -sf $ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme $ZSH_CUSTOM/themes/spaceship.zsh-theme
+
+[[ ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting  || true
 
 
-arch_generic_pre() {
-        sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
-        sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$((`nproc` * 3 / 2))\"/g" /etc/makepkg.conf
+zsh_path=$(which zsh)
+if ! grep $zsh_path /etc/shells; then
+    echo $zsh_path | sudo tee /etc/shells
+fi
 
-        # install yay first
-        yay_tmpdir=$(mktemp -d)
-        pushd $yay_tmpdir
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        popd
+if [ $SHELL != $zsh_path ]; then
+    echo 'Changing shell to zsh, please confirm:'
+    sudo chsh -s $zsh_path $(whoami)
+fi
 
-        # update and install packages
-        yay -Syu $YAY_OPTIONS
-
-        yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GENERIC
-        [[ $WITH_GUI == y ]] && yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI || true
-
-        yay -Qs hplib && yay -Rns hplib || true
-}
-
-
-arch_generic_post() {
-        # clean up package cache
-        yay -Scc --noconfirm
-}
-
-
-generic_pre() {
-        # install gulp globally
-        yarn global add gulp
-}
-
-
-generic_post() {
-        [[ ! -d $HOME/.vim ]] && git clone --recurse-submodules -j4 https://github.com/christoph-heiss/vimfiles.git $HOME/.vim || true
-        [[ ! -d $HOME/.config/base16-shell ]] && git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell || true
-
-        ln -sf $HOME/.vim/vimrc $HOME/.vimrc
-
-        cp -va files/.bash_{aliases,colors,profile,utils} files/.{bashrc,gitconfig} $HOME/
-        [[ $WITH_GUI == y ]] && cp -va files/.{tmux.conf,alacritty.yml} $HOME/ || true
-}

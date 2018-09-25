@@ -4,17 +4,24 @@
 set -e
 set -u
 
-if [[ "$(basename `pwd`)" != "dotfiles" ]]; then
-	echo "Please execute this script in the repo's folder!"
-	exit 1
-fi
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
-rm -rf files/
-mkdir -p files/
 
-cp ~/.bashrc files/
-cp ~/.bash_{aliases,colors,profile,utils} files/
-cp ~/.gitconfig files/
-cp ~/.tmux.conf files/
-cp ~/.alacritty.yml files/
+cp -v \
+    ~/.zshrc \
+    ~/.gitconfig \
+    ~/.tmux.conf \
+    files/
 
+
+case `uname` in
+Linux )
+    cp -v ~/.zsh_platform files/.zsh_platform_linux
+
+    ;;
+
+Darwin )
+    cp -v ~/.zsh_platform files/.zsh_platform_darwin
+
+    ;;
+esac
