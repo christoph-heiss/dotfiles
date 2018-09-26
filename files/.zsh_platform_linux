@@ -9,6 +9,7 @@ alias open=xdg-open
 update_platform() {
     if [ -f /etc/arch-release ]; then
         yay -Syu --sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu
+        yay -Sc --noconfirm
 
     fi
 }
