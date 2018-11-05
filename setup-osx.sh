@@ -2,10 +2,6 @@
 
 set -e
 
-WITH_GUI=y
-
-source ./common.sh
-
 
 if ! which brew > /dev/null; then
     # install brew
@@ -29,7 +25,7 @@ brew install pkg-config python3 wget
 brew install autoconf autoconf-archive automake cmake
 
 # shell-related
-brew install bash bash-completion2
+brew install zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 brew install open-completion brew-cask-completion pip-completion
 
 # fix qemu install
@@ -39,7 +35,6 @@ brew link glib
 # dev-tools
 brew install cloc lsusb truncate
 brew install qemu
-brew install hub
 
 # other tools
 brew install youtube-dl ffmpeg colordiff
@@ -65,10 +60,10 @@ brew cask install google-chrome
 brew cask install dropbox
 brew cask install insomniax
 brew cask install franz
-brew cask install bettertouchtool
+brew cask install bettertouchtool || true
 
 # clean up
-brew cleanup -s --force --prune=0
+brew cleanup -s --prune=0
 
 
 # update pip
@@ -78,8 +73,6 @@ pip3 install --upgrade setuptools
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
-generic_pre
-
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
 sudo chsh -s /usr/local/bin/bash $USER
 
@@ -88,10 +81,12 @@ if hash xcode-select > /dev/null; then
 fi
 
 # Install rust[up] and cargo
-curl https://sh.rustup.rs -sSf | sh
+if ! which brew > /dev/null; then
+    curl https://sh.rustup.rs -sSf | sh
 
-source $HOME/.cargo/env
-rustup default stable
+    source $HOME/.cargo/env
+    rustup default stable
+fi
 
 sudo pmset -a sms 0
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -107,5 +102,13 @@ Host *
     IdentityFile ~/.ssh/id_rsa
 EOF
 
+# Install powerline fonts for zsh
+tmpdir=$(mktemp -d)
+git clone --depth=1 https://github.com/powerline/fonts.git "$tmpdir"
+pushd "$tmpdir"
+./install.sh
+popd
 
-generic_post
+
+source ./common.sh
+cp -av files/.zsh_platform_darwin $HOME/.zsh_platform
