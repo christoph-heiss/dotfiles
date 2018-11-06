@@ -27,6 +27,7 @@ brew install autoconf autoconf-archive automake cmake
 # shell-related
 brew install zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 brew install open-completion brew-cask-completion pip-completion
+brew install tmux tmux-mem-cpu-load
 
 # fix qemu install
 brew install glib
