@@ -1,6 +1,5 @@
 arj
 avahi
-bash-completion
 binwalk
 bzip2
 cabextract
@@ -8,7 +7,6 @@ cmake
 cpio
 gzip
 htop
-hub
 intel-ucode
 iotop
 lhasa
