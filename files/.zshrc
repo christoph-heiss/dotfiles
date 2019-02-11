@@ -57,6 +57,7 @@ export GIT_EDITOR=$EDITOR
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 export GEM_HOM=$HOME/.gems
 
+export GPG_TTY=$(tty)
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell

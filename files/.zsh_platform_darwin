@@ -12,5 +12,4 @@ update_platform() {
     brew link --force unzip sqlite
     brew cleanup --prune=0 -s
     rm -rfv $(brew --cache)
-    brew prune
 }
