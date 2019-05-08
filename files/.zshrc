@@ -23,8 +23,9 @@ HIST_STAMPS=yyyy-mm-dd
 
 plugins=(
     docker
-    gitfast
+    git
     git-extras
+    osx
     z
 
     # must be last
@@ -58,6 +59,7 @@ export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 export GEM_HOM=$HOME/.gems
 
 export GPG_TTY=$(tty)
+export WINEARCH=win32
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell
@@ -73,7 +75,6 @@ export NVM_DIR=$HOME/.nvm
 
 # Do not freeze terminal on Ctrl-S
 stty -ixon
-
 
 alias sudo='sudo '
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
