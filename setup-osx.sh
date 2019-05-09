@@ -42,7 +42,7 @@ brew install youtube-dl ffmpeg colordiff
 brew install unrar p7zip unzip
 brew install nmap ssh-copy-id thefuck
 brew install tree screenfetch cowsay htop
-brew install vim bat # macOS ships an old version of vim
+brew install neovim bat
 brew install --with-functions --universal sqlite3
 brew install --with-nghttp2 --with-libssh2 curl
 
@@ -66,10 +66,6 @@ brew cask install bettertouchtool || true
 
 # clean up
 brew cleanup -s --prune=0
-
-
-# update pip
-pip3 install --upgrade setuptools
 
 # make python packages from brew importable.
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages

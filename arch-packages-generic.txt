@@ -13,12 +13,14 @@ lhasa
 markdown
 moreutils
 mtd-utils
+neovim
 nmap
 nodejs
 p7zip
 perl-authen-sasl
 perl-mime-tools
 perl-net-smtp-ssl
+python
 python-capstone
 rustup
 sleuthkit
@@ -28,7 +30,6 @@ strace
 tar
 thefuck
 unrar
-vim
 xz
 yarn
 z

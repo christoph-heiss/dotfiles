@@ -11,6 +11,7 @@ cp -v \
     ~/.zshrc \
     ~/.gitconfig \
     ~/.tmux.conf \
+    ~/.config/nvim/init.vim \
     files/
 
 
