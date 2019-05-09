@@ -22,6 +22,9 @@ COMPLETION_WAITING_DOTS=true
 HIST_STAMPS=yyyy-mm-dd
 
 plugins=(
+    cargo
+    colored-man-pages
+    command-not-found
     docker
     git
     git-extras
@@ -71,7 +74,6 @@ base16_material
 # Setup nvm
 export NVM_DIR=$HOME/.nvm
 [ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
-
 
 # Do not freeze terminal on Ctrl-S
 stty -ixon
