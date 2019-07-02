@@ -6,9 +6,7 @@
 # If not running interactively, do nothing
 [[ $- != *i* ]] && return
 
-
-export PATH="$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/local/bin:$HOME/.gems/bin:$PATH"
-
+export PATH="/var/lib/snapd/snap/bin:/data/go/bin:$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/local/bin:$HOME/.gems/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME=spaceship
@@ -26,14 +24,21 @@ plugins=(
     colored-man-pages
     command-not-found
     docker
+    docker-compose
     git
     git-extras
-    osx
+    kubectl
+    minikube
+    sudo
     z
 
     # must be last
     zsh-syntax-highlighting
 )
+
+if [ "$(uname)" = "Darwin" ]; then
+    plugins=(osx "${plugins[@]}")
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,13 +61,13 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 export HISTFILESIZE=$HISTSIZE
 
-export EDITOR=vim
+export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
-export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/lib64/pkgconfig:$HOME/local/share/pkgconfig
 export GEM_HOM=$HOME/.gems
+export GOPATH=/data/go
 
 export GPG_TTY=$(tty)
-export WINEARCH=win32
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell
@@ -77,6 +82,9 @@ export NVM_DIR=$HOME/.nvm
 
 # Do not freeze terminal on Ctrl-S
 stty -ixon
+
+# Do not share history
+unsetopt share_history
 
 alias sudo='sudo '
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
