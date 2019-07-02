@@ -129,6 +129,11 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+let g:go_fmt_command = "gofmt"
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
+
 
 "*****************************************************************************
 "*****************************************************************************
@@ -228,9 +233,8 @@ set scrolloff=3
 "" Status bar
 set laststatus=2
 
-"" Use modeline overrides
-set modeline
-set modelines=10
+"" Disable modeline overrides
+set nomodeline
 
 set title
 set titleold="Terminal"
