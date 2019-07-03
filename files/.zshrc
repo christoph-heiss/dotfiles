@@ -91,6 +91,12 @@ alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audi
 alias weather='curl wttr.in'
 alias diff='diff -u --color=always'
 
+git-check-merge() {
+    git merge $1 --no-ff --no-commit
+    git merge --abort # Return to previous state
+}
+
+
 source $HOME/.zsh_platform
 
 
