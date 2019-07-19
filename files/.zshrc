@@ -22,7 +22,6 @@ HIST_STAMPS=yyyy-mm-dd
 plugins=(
     cargo
     colored-man-pages
-    command-not-found
     docker
     docker-compose
     git
@@ -94,6 +93,11 @@ alias diff='diff -u --color=always'
 git-check-merge() {
     git merge $1 --no-ff --no-commit
     git merge --abort # Return to previous state
+}
+
+gen-rsa-keypair() {
+    openssl genpkey -algorithm RSA -out "$1" -pkeyopt rsa_keygen_bits:4096
+    openssl rsa -pubout -in "$1" -out "$1.pub"
 }
 
 
