@@ -33,7 +33,7 @@ ln -sf $ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme $ZSH_CUSTOM/theme
 
 zsh_path=$(which zsh)
 if ! grep $zsh_path /etc/shells; then
-    echo $zsh_path | sudo tee /etc/shells
+    echo $zsh_path | sudo tee -a /etc/shells
 fi
 
 if [ $SHELL != $zsh_path ]; then
