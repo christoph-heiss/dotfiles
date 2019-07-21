@@ -67,13 +67,11 @@ export GEM_HOM=$HOME/.gems
 export GOPATH=/data/go
 
 export GPG_TTY=$(tty)
+export WINEARCH=win32
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Set current terminal theme
-base16_material
 
 # Setup nvm
 export NVM_DIR=$HOME/.nvm
@@ -108,6 +106,15 @@ __update_log() {
     printf "\n 📦 \e[92mUpdating $1\e[0m\n"
 }
 
+update_omz_custom() {
+    pushd $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+    git pull
+    popd
+
+    pushd $ZSH_CUSTOM/themes/spaceship-prompt
+    git pull
+    popd
+}
 
 update() {
     __update_log 'system packages'
@@ -116,20 +123,20 @@ update() {
     if hash yarn 2> /dev/null; then
         __update_log 'global node packages'
         yarn global upgrade
-
     fi
 
 
     if hash gem 2> /dev/null; then
         __update_log gems
         gem update
-
     fi
 
 
     if hash rustup 2> /dev/null; then
         __update_log rust
         rustup update
-
     fi
+
+    __update_log 'oh-my-zsh custom stuff'
+    update_omz_custom
 }

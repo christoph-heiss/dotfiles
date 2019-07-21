@@ -69,67 +69,48 @@ Plug 'tomasr/molokai'
 "" Custom bundles
 "*****************************************************************************
 
-" c
+" C
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 
-
-" html
-"" HTML Bundle
+" HTML
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
+" JS + React
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 
-" javascript
-"" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
-
-
-" lua
-"" Lua Bundle
+" Lua
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-lua-inspect'
 
-
-" php
-"" PHP Bundle
+" PHP
 Plug 'arnaud-lb/vim-php-namespace'
 
-
-" python
-"" Python Bundle
+" Python
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
-
-" rust
-" Vim racer
+" Rust
 Plug 'racer-rust/vim-racer'
-
-" Rust.vim
 Plug 'rust-lang/rust.vim'
-
-
-" vuejs
-Plug 'posva/vim-vue'
-Plug 'leafOfTree/vim-vue-plugin'
 
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-let g:deoplete#enable_at_startup = 1
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" vim-go
+" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 let g:go_fmt_command = "gofmt"
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:go_fmt_autosave = 1
 let g:go_fmt_fail_silently = 1
+
+" editorconfig-vim
+Plug 'editorconfig/editorconfig-vim'
 
 
 "*****************************************************************************
@@ -183,6 +164,9 @@ else
     set shell=/bin/sh
 endif
 
+" disable wrapping
+set nowrap
+
 " session management
 let g:session_directory = "~/.config/nvim/session"
 let g:session_autoload = "no"
@@ -197,7 +181,12 @@ set ruler
 set number
 
 let no_buffers_menu=1
-silent! colorscheme base16-material
+set colorcolumn=80,100,120
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set mousemodel=popup
 set t_Co=256
@@ -307,7 +296,7 @@ command! FixWhitespace :%s/\s\+$//e
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
-    set wm=2
+    set wrapmargin=2
     set textwidth=79
   endfunction
 endif
@@ -482,11 +471,10 @@ let g:javascript_enable_domhtmlcss = 1
 " python
 " vim-python
 augroup vimrc-python
-  autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
-      \ formatoptions+=croq softtabstop=4
+  autocmd! FileType python setlocal
+      \ formatoptions+=croq
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-augroup END
+augroup end
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
@@ -519,14 +507,21 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
+" let g:rustfmt_autosave = 1
+let g:rustfmt_command = 'rustup run stable rustfmt'
 
+" go
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
 
-" vuejs
-" vim vue
-let g:vue_disable_pre_processors=1
-" vim vue plugin
-let g:vim_vue_plugin_load_full_syntax = 1
+" editorconfig
+" Ensures editorconfig-vim works well with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "*****************************************************************************
 "*****************************************************************************
