@@ -89,7 +89,15 @@ alias weather='curl wttr.in'
 alias diff='diff -u --color=always'
 
 git-check-merge() {
-    git merge $1 --no-ff --no-commit
+    local output="$(git merge $1 --no-ff --no-commit 2>&1)"
+
+    if [[ "$output" == *"merge failed"* ]]; then
+        echo "$output" | grep CONFLICT 2>/dev/null
+        echo "Automatic merge failed" 2>/dev/null
+    else
+        echo "Automatic merge went well"
+    fi
+
     git merge --abort # Return to previous state
 }
 
