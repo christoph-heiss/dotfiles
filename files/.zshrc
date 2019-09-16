@@ -85,10 +85,16 @@ stty -ixon
 # Do not share history
 unsetopt share_history
 
+# Disable annoying correction prompt
+unsetopt correct_all
+
 alias sudo='sudo '
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
 alias weather='curl wttr.in'
 alias diff='diff -u --color=always'
+
+alias gcan!='git commit --amend --date now --reset-author'
+
 
 git-check-merge() {
     local output="$(git merge $1 --no-ff --no-commit 2>&1)"
