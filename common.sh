@@ -29,15 +29,3 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 ln -sf $ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme $ZSH_CUSTOM/themes/spaceship.zsh-theme
 
 [[ ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting  || true
-
-
-zsh_path=$(which zsh)
-if ! grep $zsh_path /etc/shells; then
-    echo $zsh_path | sudo tee -a /etc/shells
-fi
-
-if [ $SHELL != $zsh_path ]; then
-    echo 'Changing shell to zsh, please confirm:'
-    sudo chsh -s $zsh_path $(whoami)
-fi
-

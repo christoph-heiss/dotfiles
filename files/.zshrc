@@ -6,7 +6,7 @@
 # If not running interactively, do nothing
 [[ $- != *i* ]] && return
 
-export PATH="/var/lib/snapd/snap/bin:/data/go/bin:$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/local/bin:$HOME/.gems/bin:$PATH"
+export PATH="/var/lib/snapd/snap/bin:/data/go/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/local/bin:$HOME/.gems/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME=spaceship
@@ -27,7 +27,6 @@ plugins=(
     git
     git-extras
     kubectl
-    minikube
     sudo
     z
 
@@ -50,6 +49,8 @@ SPACESHIP_EXEC_TIME_ELAPSED=10
 SPACESHIP_EXIT_CODE_SYMBOL="✘ "
 SPACESHIP_EXIT_CODE_SHOW=true
 
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_TIME_SHOW=true
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -83,10 +84,16 @@ stty -ixon
 # Do not share history
 unsetopt share_history
 
+# Disable annoying correction prompt
+unsetopt correct_all
+
 alias sudo='sudo '
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
 alias weather='curl wttr.in'
 alias diff='diff -u --color=always'
+
+alias gcan!='git commit --amend --date now --reset-author'
+
 
 git-check-merge() {
     local output="$(git merge $1 --no-ff --no-commit 2>&1)"

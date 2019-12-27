@@ -22,6 +22,7 @@ perl-mime-tools
 perl-net-smtp-ssl
 python
 python-capstone
+python-pip
 rustup
 sleuthkit
 speedometer

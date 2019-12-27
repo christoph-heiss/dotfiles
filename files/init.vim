@@ -65,10 +65,6 @@ Plug 'honza/vim-snippets'
 "" Color
 Plug 'tomasr/molokai'
 
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
 " C
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
@@ -104,6 +100,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Assembly
+Plug 'Shirk/vim-gas'
+autocmd BufNewFile,BufRead *.sx setlocal filetype=gas
+
 let g:go_fmt_command = "gofmt"
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:go_fmt_autosave = 1
@@ -111,6 +111,10 @@ let g:go_fmt_fail_silently = 1
 
 " editorconfig-vim
 Plug 'editorconfig/editorconfig-vim'
+
+Plug 'hiphish/jinja.vim'
+
+autocmd! BufRead,BufNewFile *.tera call jinja#AdjustFiletype()
 
 
 "*****************************************************************************
@@ -403,7 +407,10 @@ nmap <leader>y :History:<CR>
 " let g:UltiSnipsEditSplit="vertical"
 
 " ale
-let g:ale_linters = {}
+let g:ale_linters = {'c': ['clang', 'gcc'], 'cpp': ['clang++', 'g++']}
+
+let g:ale_cpp_gcc_options = '-std=c++1z -Wall'
+let g:ale_cpp_clang_options = '-std=c++1z -Wall'
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -467,9 +474,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 let g:javascript_enable_domhtmlcss = 1
 
 
-
 " python
-" vim-python
 augroup vimrc-python
   autocmd! FileType python setlocal
       \ formatoptions+=croq
@@ -525,11 +530,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "*****************************************************************************
 "*****************************************************************************
-
-"" Include user's local vim config
-if filereadable(expand("~/.config/nvim/local_init.vim"))
-  source ~/.config/nvim/local_init.vim
-endif
 
 "*****************************************************************************
 "" Convenience variables
