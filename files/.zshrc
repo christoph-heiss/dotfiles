@@ -55,6 +55,7 @@ SPACESHIP_EXEC_TIME_ELAPSED=10
 SPACESHIP_EXIT_CODE_SYMBOL="✘ "
 SPACESHIP_EXIT_CODE_SHOW=true
 
+SPACESHIP_TIME_SHOW=true
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -97,6 +98,9 @@ stty -ixon
 
 # Do not share history
 unsetopt share_history
+
+# Disable annoying correction prompt
+unsetopt correct_all
 
 alias sudo='sudo '
 alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
