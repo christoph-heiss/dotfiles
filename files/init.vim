@@ -24,14 +24,11 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
@@ -42,15 +39,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'chriskempson/base16-vim'
 
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
 let g:make = 'gmake'
 if exists('make')
-        let g:make = 'make'
+    let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
@@ -58,12 +49,12 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
-"" Snippets
-" Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 "" Color
 Plug 'tomasr/molokai'
+
+"*****************************************************************************
+"" Custom bundles
+"*****************************************************************************
 
 " C
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
@@ -83,9 +74,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-lua-inspect'
 
-" PHP
-Plug 'arnaud-lb/vim-php-namespace'
-
 " Python
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
@@ -98,32 +86,19 @@ Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" Assembly
-Plug 'Shirk/vim-gas'
-autocmd BufNewFile,BufRead *.sx setlocal filetype=gas
-
-let g:go_fmt_command = "gofmt"
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1
+" let g:go_fmt_command = "gofmt"
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_fail_silently = 1
 
 " editorconfig-vim
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'hiphish/jinja.vim'
-
-autocmd! BufRead,BufNewFile *.tera call jinja#AdjustFiletype()
-
 
 "*****************************************************************************
 "*****************************************************************************
-
-"" Include user's extra bundle
-if filereadable(expand("~/.config/nvim/local_bundles.vim"))
-  source ~/.config/nvim/local_bundles.vim
-endif
 
 call plug#end()
 
@@ -197,21 +172,13 @@ set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
+let g:CSApprox_loaded = 1
 
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-endif
-
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
 
 " Remove whitespaces at EOLs when saving.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -236,6 +203,7 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
 " Remove search highlights with esc
 nnoremap <esc> :noh<return><esc>
 
@@ -266,42 +234,19 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
-" grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
-let Grep_Default_Options = '-IR'
-let Grep_Skip_Files = '*.log *.db'
-let Grep_Skip_Dirs = '.git node_modules'
-
-" terminal emulation
-nnoremap <silent> <leader>sh :terminal<CR>
-
-
-"*****************************************************************************
-"" Commands
-"*****************************************************************************
-" remove trailing whitespaces
-command! FixWhitespace :%s/\s\+$//e
-
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
-    set wrap
-    set wrapmargin=2
+    set wrap          " turn on line wrapping
+    set wrapmargin=8  " wrap lines when coming within 8 characters from right side"
     set textwidth=79
+    set linebreak     " soft line wrapping
+    set showbreak=…   " show ellipsis at breaking
+    " make line jumping sane
+    map j gj
+    map k gk
   endfunction
 endif
 
@@ -324,6 +269,7 @@ augroup END
 augroup vimrc-wrapping
   autocmd!
   autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+  autocmd BufRead,BufNewFile *.tex call s:setupWrapping()
 augroup END
 
 "" make/cmake
@@ -376,41 +322,14 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-"" fzf.vim
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-
-" The Silver Searcher
-if executable('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-" ripgrep
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
-
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
-"Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
-
-" snippets
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" let g:UltiSnipsEditSplit="vertical"
 
 " ale
 let g:ale_linters = {'c': ['clang', 'gcc'], 'cpp': ['clang++', 'g++']}
-
-let g:ale_cpp_gcc_options = '-std=c++1z -Wall'
-let g:ale_cpp_clang_options = '-std=c++1z -Wall'
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
+let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -473,8 +392,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " javascript
 let g:javascript_enable_domhtmlcss = 1
 
-
 " python
+" vim-python
 augroup vimrc-python
   autocmd! FileType python setlocal
       \ formatoptions+=croq
@@ -515,10 +434,6 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustup run stable rustfmt'
 
-" go
-let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1
-
 " editorconfig
 " Ensures editorconfig-vim works well with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -527,9 +442,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-"*****************************************************************************
-"*****************************************************************************
 
 "*****************************************************************************
 "" Convenience variables
