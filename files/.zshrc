@@ -80,8 +80,11 @@ export GPG_TTY=$(tty)
 export WINEARCH=win32
 
 export DEVKITPRO=/opt/devkitpro
-export DEVKITARM=/opt/devkitpro/devkitARM
-export DEVKITPPC=/opt/devkitpro/devkitPPC
+export DEVKITARM=${DEVKITPRO}/devkitARM
+export DEVKITPPC=${DEVKITPRO}/devkitPPC
+PATH_ARRAY+="${DEVKITPRO}/tools/bin"
+PATH_ARRAY+="${DEVKITPPC}/bin"
+PATH_ARRAY+="${DEVKITARM}/bin"
 
 export PATH="${(j[:])PATH_ARRAY}:$PATH"
 
