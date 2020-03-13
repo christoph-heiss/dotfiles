@@ -25,18 +25,14 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
-Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'chriskempson/base16-vim'
 
 let g:make = 'gmake'
@@ -49,16 +45,12 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
-"" Color
-Plug 'tomasr/molokai'
-
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
 
 " C
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
 
 " HTML
 Plug 'hail2u/vim-css3-syntax'
@@ -207,10 +199,6 @@ nnoremap N Nzzzv
 " Remove search highlights with esc
 nnoremap <esc> :noh<return><esc>
 
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
-
 " vim-airline
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#branch#enabled = 1
@@ -328,8 +316,8 @@ nmap <leader>y :History:<CR>
 
 " ale
 let g:ale_linters = {'c': ['clang', 'gcc'], 'cpp': ['clang++', 'g++']}
-let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
-let g:ale_cpp_clang_options = '-std=c++17 -Wall'
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall -Isrc/include -Iinclude'
+let g:ale_cpp_clang_options = '-std=c++17 -Wall -Isrc/include -Iinclude'
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -433,10 +421,6 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustup run stable rustfmt'
-
-" editorconfig
-" Ensures editorconfig-vim works well with fugitive
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
