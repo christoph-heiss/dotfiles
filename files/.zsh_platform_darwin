@@ -9,4 +9,5 @@ update_platform() {
     __update_log 'brew packages'
     brew update
     brew upgrade
+    brew cask upgrade
 }
