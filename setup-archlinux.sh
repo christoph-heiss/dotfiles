@@ -6,6 +6,7 @@ set -u
 YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
 ARCH_PACKAGE_LIST_GENERIC=arch-packages-generic.txt
 ARCH_PACKAGE_LIST_GUI=arch-packages-gui.txt
+ARCH_GNOME_PACKAGE_LIST_UNNEEDED=arch-gnome-packages-unneeded.txt
 ARCH_SNAP_LIST=arch-snaps.txt
 
 WITH_GUI=$(grep antergos /etc/os-release && echo y || echo n)
@@ -35,6 +36,10 @@ yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GENERIC
 
 if [[ $WITH_GUI == y ]]; then
     yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI
+
+    for p in $(cat $ARCH_GNOME_PACKAGE_LIST_UNNEEDED); do
+        yay -Q $p >/dev/null 2>&1 && yay -Rncs $p || true
+    done
 
     # Setup snapd
     sudo systemctl enable --now snapd
