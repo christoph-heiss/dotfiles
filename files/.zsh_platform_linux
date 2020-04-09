@@ -14,4 +14,9 @@ update_platform() {
         sudo dnf upgrade --assumeyes
         sudo dnf clean packages
     fi
+
+    if hash snap 2> /dev/null; then
+        __update_log snaps
+        sudo snap refresh
+    fi
 }
