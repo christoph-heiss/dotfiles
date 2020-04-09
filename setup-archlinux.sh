@@ -3,10 +3,10 @@
 set -e
 set -u
 
-
 YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
 ARCH_PACKAGE_LIST_GENERIC=arch-packages-generic.txt
 ARCH_PACKAGE_LIST_GUI=arch-packages-gui.txt
+ARCH_SNAP_LIST=arch-snaps.txt
 
 WITH_GUI=$(grep antergos /etc/os-release && echo y || echo n)
 
@@ -32,13 +32,20 @@ yay -Syu $YAY_OPTIONS
 
 # Install all wanted packages
 yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GENERIC
-[[ $WITH_GUI == y ]] && yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI || true
+
+if [[ $WITH_GUI == y ]]; then
+    yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI
+
+    # Setup snapd
+    sudo systemctl enable --now snapd
+    systemctl enable --now snapd
+    sudo snap install $(cat $ARCH_SNAP_LIST)
+fi
 
 yay -Qs hplib && yay -Rns hplib || true
 
 # Clean up package cache
 yay -Scc --noconfirm
-
 
 ./common.sh
 cp -av files/.zsh_platform_linux $HOME/.zsh_platform
