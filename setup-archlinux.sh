@@ -5,11 +5,11 @@ set -u
 
 YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
 ARCH_PACKAGE_LIST_GENERIC=arch-packages-generic.txt
-ARCH_PACKAGE_LIST_GUI=arch-packages-gui.txt
+ARCH_PACKAGE_LIST_GUI=arch-gnome-packages.txt
 ARCH_GNOME_PACKAGE_LIST_UNNEEDED=arch-gnome-packages-unneeded.txt
 ARCH_SNAP_LIST=arch-snaps.txt
 
-WITH_GUI=$(grep antergos /etc/os-release && echo y || echo n)
+[ -z ${WITH_GUI+x} ] && WITH_GUI=n || true
 
 
 # Enable pacman colors
