@@ -22,7 +22,6 @@ perl-net-smtp-ssl
 python
 python-capstone
 python-pip
-rustup
 sleuthkit
 speedometer
 squashfs-tools
@@ -31,7 +30,6 @@ tar
 thefuck
 unrar
 xz
-yarn
 z
 zsh
 zsh-autosuggestions

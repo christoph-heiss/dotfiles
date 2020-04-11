@@ -4,10 +4,10 @@ set -e
 set -u
 
 YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
-ARCH_PACKAGE_LIST_GENERIC=arch-packages-generic.txt
-ARCH_PACKAGE_LIST_GUI=arch-gnome-packages.txt
-ARCH_GNOME_PACKAGE_LIST_UNNEEDED=arch-gnome-packages-unneeded.txt
-ARCH_SNAP_LIST=arch-snaps.txt
+ARCH_PACKAGES_GENERIC=arch-packages-generic.txt
+ARCH_GNOME_PACKAGES=arch-gnome-packages.txt
+ARCH_GNOME_PACKAGES_UNWANTED=arch-gnome-packages-unwanted.txt
+ARCH_FLATPAK_PACKAGES=arch-flatpak-packages.txt
 
 [ -z ${WITH_GUI+x} ] && WITH_GUI=n || true
 
@@ -32,22 +32,17 @@ fi
 yay -Syu $YAY_OPTIONS
 
 # Install all wanted packages
-yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GENERIC
+yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGES_GENERIC
 
 if [[ $WITH_GUI == y ]]; then
-    yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGE_LIST_GUI
+    yay -S $YAY_OPTIONS --needed - < $ARCH_GNOME_PACKAGES
 
-    for p in $(cat $ARCH_GNOME_PACKAGE_LIST_UNNEEDED); do
+    for p in $(cat $ARCH_GNOME_PACKAGES_UNWANTED); do
         yay -Q $p >/dev/null 2>&1 && yay -Rncs $p || true
     done
 
-    # Setup snapd
-    sudo systemctl enable --now snapd
-    systemctl enable --now snapd
-    sudo snap install $(cat $ARCH_SNAP_LIST)
+    flatpak install --user --assumeyes --noninteractive $(cat $ARCH_FLATPAK_PACKAGES)
 fi
-
-yay -Qs hplib && yay -Rns hplib || true
 
 # Clean up package cache
 yay -Scc --noconfirm
