@@ -1,2 +1,4 @@
 com.discordapp.Discord
 com.spotify.Client
+org.libreoffice.LibreOffice
+org.mozilla.firefox

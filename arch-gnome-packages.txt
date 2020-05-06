@@ -1,14 +1,12 @@
 alacritty
 cups
 cups-filters
-firefox
 flatpak
 fontconfig
 geary
 ghostscript
 gimp
 hplip
-libreoffice-fresh
 libva-vdpau-driver
 nautilus-share
 noto-fonts
