@@ -1,0 +1,3 @@
+https://github.com/ubuntu/gnome-shell-extension-appindicator.git appindicatorsupport@rgcjonas.gmail.com
+https://github.com/wbolster/nothing-to-say.git nothing-to-say@extensions.gnome.wouter.bolsterl.ee
+https://github.com/AndresCidoncha/audio-switcher.git audio-switcher@AndresCidoncha

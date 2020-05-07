@@ -6,8 +6,11 @@ set -u
 YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
 ARCH_PACKAGES_GENERIC=arch-packages-generic.txt
 ARCH_GNOME_PACKAGES=arch-gnome-packages.txt
+ARCH_GNOME_EXTENSIONS=arch-gnome-shell-extensions.txt
 ARCH_GNOME_PACKAGES_UNWANTED=arch-gnome-packages-unwanted.txt
 ARCH_FLATPAK_PACKAGES=arch-flatpak-packages.txt
+
+GNOME_SHELL_EXTS_PATH="$HOME/.local/share/gnome-shell/extensions"
 
 [ -z ${WITH_GUI+x} ] && WITH_GUI=n || true
 
@@ -37,11 +40,20 @@ yay -S $YAY_OPTIONS --needed - < $ARCH_PACKAGES_GENERIC
 if [[ $WITH_GUI == y ]]; then
     yay -S $YAY_OPTIONS --needed - < $ARCH_GNOME_PACKAGES
 
-    for p in $(cat $ARCH_GNOME_PACKAGES_UNWANTED); do
+    while read -r p; do
         yay -Q $p >/dev/null 2>&1 && yay -Rncs $p || true
-    done
+    done < $ARCH_GNOME_PACKAGES_UNWANTED
 
     flatpak install --user --assumeyes --noninteractive $(cat $ARCH_FLATPAK_PACKAGES)
+
+    # Install shell extensions
+    mkdir -p $GNOME_SHELL_EXTS_PATH
+    pushd $GNOME_SHELL_EXTS_PATH
+    while read -r ext; do
+        info=($ext)
+        git clone "${info[0]}" "${info[1]}"
+    done < $ARCH_GNOME_EXTENSIONS
+    popd
 fi
 
 # Clean up package cache
