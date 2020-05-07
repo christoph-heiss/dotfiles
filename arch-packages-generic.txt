@@ -1,5 +1,6 @@
 apparmor
 avahi
+bat
 binwalk
 bzip2
 clang

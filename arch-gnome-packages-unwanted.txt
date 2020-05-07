@@ -1,8 +1,9 @@
 accerciser
+epiphany
 evolution
-evolution-data-server
 five-or-more
 four-in-a-row
+gedit
 gnome-calendar
 gnome-chess
 gnome-contacts
@@ -28,7 +29,10 @@ gnome-usage
 gnome-user-share
 grilo-plugins
 hitori
+iagno
+lightsoff
+quadrapassel
+swell-foop
 tali
 totem
-tracker-miners
 yelp
