@@ -15,8 +15,8 @@ update_platform() {
         sudo dnf clean packages
     fi
 
-    if hash snap 2> /dev/null; then
-        __update_log snaps
-        sudo snap refresh
+    if hash flatpak 2> /dev/null; then
+        __update_log 'flatpak apps'
+        flatpak update -y
     fi
 }
