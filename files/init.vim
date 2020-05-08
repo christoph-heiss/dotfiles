@@ -48,9 +48,6 @@ Plug 'xolox/vim-session'
 "" Custom bundles
 "*****************************************************************************
 
-" C
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-
 " HTML
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
@@ -158,10 +155,7 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-set mousemodel=popup
 set t_Co=256
-set guioptions=egmrti
-set gfn=Monospace\ 10
 
 let g:CSApprox_loaded = 1
 
@@ -188,6 +182,9 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
+" shortcut for toggeling paste mode
+set pastetoggle=<C-p>
+
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 " Search mappings: These will make it so that going to the next one in a
@@ -196,7 +193,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Remove search highlights with esc
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <esc> :noh<return><esc>
 
 " vim-airline
 let g:airline_theme = 'powerlineish'
@@ -218,6 +215,9 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+
+" allow saving files as root if vim was started as non-root
+cmap w!! w !sudo tee >/dev/null %
 
 "*****************************************************************************
 "" Functions
@@ -264,10 +264,17 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
+augroup hybrid-numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+
 set listchars=tab:!·,trail:·
 nnoremap <leader>l :set list!<cr>
 
 set autoread
+
+" nnoremap <C-/> :gc<CR>
 
 "*****************************************************************************
 "" Mappings
@@ -341,6 +348,9 @@ noremap <leader>w :bn<CR>
 "" Close buffer
 noremap <leader>c :bd<CR>
 
+"" Switch to last buffer quickly
+noremap <leader><leader> :e#<cr>
+
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
@@ -357,9 +367,6 @@ vmap > >gv
 "" Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
 
 "*****************************************************************************
 "" Custom configs
