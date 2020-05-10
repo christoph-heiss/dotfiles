@@ -44,7 +44,7 @@ if [[ $WITH_GUI == y ]]; then
         yay -Q $p >/dev/null 2>&1 && yay -Rncs $p || true
     done < $ARCH_GNOME_PACKAGES_UNWANTED
 
-    flatpak install --user --assumeyes --noninteractive $(cat $ARCH_FLATPAK_PACKAGES)
+    flatpak install --user --assumeyes --noninteractive flathub $(cat $ARCH_FLATPAK_PACKAGES)
 
     # Install shell extensions
     mkdir -p $GNOME_SHELL_EXTS_PATH
@@ -58,6 +58,9 @@ fi
 
 # Clean up package cache
 yay -Scc --noconfirm
+
+# Add user to wireshark group for capture support
+usermod --append --groups wireshark $(whoami)
 
 ./common.sh
 cp -av files/.zsh_platform_linux $HOME/.zsh_platform
