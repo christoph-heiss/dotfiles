@@ -3,9 +3,7 @@ cups
 cups-filters
 flatpak
 fontconfig
-geary
 ghostscript
-gimp
 hplip
 libva-vdpau-driver
 nautilus-share
@@ -17,8 +15,6 @@ python-opengl
 qemu
 qemu-arch-extra
 screenfetch
-shotwell
-spotify
 sushi
 texlive-most
 tmux
