@@ -1,11 +1,14 @@
 accerciser
+devhelp
 epiphany
 evolution
 five-or-more
 four-in-a-row
 gedit
+gnome-boxes
 gnome-calendar
 gnome-chess
+gnome-clocks
 gnome-contacts
 gnome-dictionary
 gnome-getting-started-docs
