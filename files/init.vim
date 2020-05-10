@@ -84,6 +84,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " editorconfig-vim
 Plug 'editorconfig/editorconfig-vim'
 
+" GNU Assembler
+Plug 'Shirk/vim-gas'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -268,6 +270,13 @@ augroup hybrid-numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" vim-gas
+augroup vim-gas-sx-ext
+  autocmd!
+  autocmd BufNewFile,BufRead *.sx setlocal filetype=gas
+augroup END
 
 set listchars=tab:!·,trail:·
 nnoremap <leader>l :set list!<cr>
