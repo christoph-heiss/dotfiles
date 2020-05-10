@@ -3,14 +3,16 @@
 set -e
 set -u
 
-YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
-ARCH_PACKAGES_GENERIC=arch-packages-generic.txt
-ARCH_GNOME_PACKAGES=arch-gnome-packages.txt
-ARCH_GNOME_EXTENSIONS=arch-gnome-shell-extensions.txt
-ARCH_GNOME_PACKAGES_UNWANTED=arch-gnome-packages-unwanted.txt
-ARCH_FLATPAK_PACKAGES=arch-flatpak-packages.txt
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
-GNOME_SHELL_EXTS_PATH="$HOME/.local/share/gnome-shell/extensions"
+YAY_OPTIONS="--sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu"
+ARCH_PACKAGES_GENERIC=packages/arch/generic.txt
+ARCH_GNOME_PACKAGES=packages/arch/gnome.txt
+ARCH_GNOME_EXTENSIONS=packages/arch/gnome-shell-extensions.txt
+ARCH_GNOME_PACKAGES_UNWANTED=packages/arch/gnome-unwanted.txt
+ARCH_FLATPAK_PACKAGES=packages/arch/flatpak.txt
+
+GNOME_SHELL_EXTS_PATH=$HOME/.local/share/gnome-shell/extensions
 
 [ -z ${WITH_GUI+x} ] && WITH_GUI=n || true
 
