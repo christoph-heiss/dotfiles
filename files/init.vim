@@ -60,7 +60,6 @@ Plug 'pangloss/vim-javascript'
 
 " Lua
 Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-lua-inspect'
 
 " Python
 Plug 'davidhalter/jedi-vim'
