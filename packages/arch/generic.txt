@@ -7,6 +7,7 @@ clang
 cmake
 cpio
 ddrescue
+dnsutils
 foldingathome
 gzip
 htop
@@ -30,6 +31,7 @@ strace
 tar
 thefuck
 unrar
+whois
 xz
 z
 zsh

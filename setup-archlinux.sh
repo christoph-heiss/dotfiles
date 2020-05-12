@@ -43,7 +43,7 @@ if [[ $WITH_GUI == y ]]; then
     yay -S $YAY_OPTIONS --needed - < $ARCH_GNOME_PACKAGES
 
     while read -r p; do
-        yay -Q $p >/dev/null 2>&1 && yay -Rncs $p || true
+        yay -Q $p >/dev/null 2>&1 && yay -Rnc $YAY_OPTIONS $p || true
     done < $ARCH_GNOME_PACKAGES_UNWANTED
 
     flatpak install --user --assumeyes --noninteractive flathub $(cat $ARCH_FLATPAK_PACKAGES)
