@@ -70,7 +70,7 @@ export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/lib64/pkgconfig:$HOME/local/share/pkgconfig
 export GEM_HOME=$HOME/.gem
-PATH_ARRAY+="$GEM_HOME/ruby/$(ruby --version | cut -c 6-10)/bin"
+PATH_ARRAY+="$GEM_HOME/ruby/$(ruby --version | cut -c 6-8).0/bin"
 
 # Golang
 export GOPATH=$HOME/.go
