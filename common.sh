@@ -23,7 +23,7 @@ case `uname` in
 Linux )
     cp -va files/.zsh_platform_linux $HOME/;;
 Darwin )
-    cp -va files.zsh_platform_darwin $HOME/;;
+    cp -va files/.zsh_platform_darwin $HOME/;;
 esac
 
 mkdir -p $HOME/.config/nvim

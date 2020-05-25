@@ -51,16 +51,14 @@ brew install --with-nghttp2 --with-libssh2 curl
 brew link --force unzip sqlite curl
 
 # GUI applications
-brew cask install qlmarkdown quicklook-json
-brew cask install blender
+brew cask install quicklook-json
 brew cask install wireshark
 brew cask install filezilla
+brew cask install firefox-nightly
 brew cask install spotify vlc
-brew cask install google-chrome
-brew cask install dropbox
 brew cask install insomniax
-brew cask install franz
 brew cask install bettertouchtool || true
+brew cask isntall alt-tab
 
 # Install terminal font
 brew install homebrew/cask-fonts/font-roboto-mono-for-powerline
@@ -103,4 +101,3 @@ Host *
 EOF
 
 source ./common.sh
-cp -av files/.zsh_platform_darwin $HOME/.zsh_platform
