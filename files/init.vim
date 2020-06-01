@@ -226,10 +226,11 @@ cmap w!! w !sudo tee >/dev/null %
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap          " turn on line wrapping
-    set wrapmargin=8  " wrap lines when coming within 8 characters from right side"
-    set textwidth=79
+    set wrapmargin=4  " wrap lines when coming within 8 characters from right side"
+    set textwidth=99
     set linebreak     " soft line wrapping
     set showbreak=…   " show ellipsis at breaking
+    set shiftwidth=2  " 2 spaces for indent only
     " make line jumping sane
     map j gj
     map k gk
