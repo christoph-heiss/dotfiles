@@ -106,7 +106,8 @@ unsetopt share_history
 unsetopt correct_all
 
 alias sudo='sudo '
-alias yt-dl="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
+alias yt-dl-mp3="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
+alias yt-dl-video="youtube-dl -iw -f 'bestvideo[height<=?1080,ext=mp4]+bestaudio[ext=m4a]/best'"
 alias weather='curl wttr.in'
 alias diff='diff -u --color=always'
 
