@@ -278,6 +278,12 @@ augroup vim-gas-sx-ext
   autocmd BufNewFile,BufRead *.sx setlocal filetype=gas
 augroup END
 
+" CMake highlighting for ctest files
+augroup vim-ctest-syntax-highlighting
+  autocmd!
+  autocmd BufNewFile,BufRead *.ctest setlocal filetype=cmake
+augroup END
+
 set listchars=tab:!·,trail:·
 nnoremap <leader>l :set list!<cr>
 
