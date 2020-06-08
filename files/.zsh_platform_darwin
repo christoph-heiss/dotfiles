@@ -2,6 +2,8 @@
 # ~/.zsh_platform for darwin
 #
 
+alias lsblk='diskutil list'
+alias eject='diskutil eject'
 
 update_platform() {
     sudo softwareupdate -i -a || true
