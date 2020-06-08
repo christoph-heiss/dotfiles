@@ -86,6 +86,8 @@ PATH_ARRAY+="${DEVKITPRO}/tools/bin"
 PATH_ARRAY+="${DEVKITPPC}/bin"
 PATH_ARRAY+="${DEVKITARM}/bin"
 
+[[ "`uname`" == "Darwin" ]] && PATH_ARRAY+="/usr/local/opt/grep/libexec/gnubin"
+
 export PATH="${(j[:])PATH_ARRAY}:$PATH"
 
 # Setup base16 themes
