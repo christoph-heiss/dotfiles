@@ -3,7 +3,6 @@
 set -e
 set -u
 
-
 # update pip
 pip3 install --upgrade setuptools
 pip3 install --user pynvim         # needed for deoplete in neovim
@@ -17,17 +16,20 @@ nvm install node
 
 [[ ! -d $HOME/.oh-my-zsh ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-cp -va files/.{zshrc,gitconfig,tmux.conf} $HOME/
+cp -vp files/.{zshrc,gitconfig,tmux.conf} $HOME/
 
 case `uname` in
 Linux )
-    cp -va files/.zsh_platform_linux $HOME/;;
+    cp -vp files/.zsh_platform_linux $HOME/;;
 Darwin )
-    cp -va files/.zsh_platform_darwin $HOME/;;
+    cp -vp files/.zsh_platform_darwin $HOME/;;
 esac
 
 mkdir -p $HOME/.config/nvim
-cp -va files/init.vim $HOME/.config/nvim/
+cp -vp files/init.vim $HOME/.config/nvim/
+
+mkdir -p $HOME/.config/htop
+cp -vp files/htoprc $HOME/.config/htop/
 
 touch $HOME/.z
 
