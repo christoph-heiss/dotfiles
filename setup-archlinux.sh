@@ -17,8 +17,10 @@ GNOME_SHELL_EXTS_PATH=$HOME/.local/share/gnome-shell/extensions
 [ -z ${WITH_GUI+x} ] && WITH_GUI=n || true
 
 
-# Enable pacman colors
-sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+# Enable `Color`, `CheckSpace` and `VerbosePkgLists` for pacman
+sudo sed -i \
+    's/^#Color$/Color/;s/^#CheckSpace/CheckSpace/;s/^#VerbosePkgLists/VerbosePkgLists/' \
+    /etc/pacman.conf
 
 # Instruct makepkg to use (1.5 * count) cores while compiling
 sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$((`nproc` * 3 / 2))\"/g" /etc/makepkg.conf

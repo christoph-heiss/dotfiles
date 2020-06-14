@@ -8,7 +8,7 @@ alias open=xdg-open
 update_platform() {
     if [ -f /etc/arch-release ]; then
         yay -Syu --sudoloop --noconfirm --nodiffmenu --noeditmenu --noupgrademenu
-        yay -Yc # Clean unneeeded dependencies
+        yay -Yc --noconfirm # Clean unneeeded dependencies
         yay -Scc --noconfirm
     elif [ -f /etc/fedora-release ]; then
         sudo dnf upgrade --assumeyes
