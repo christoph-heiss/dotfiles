@@ -9,6 +9,7 @@ cpio
 ddrescue
 dnsutils
 foldingathome
+git-extras
 gzip
 htop
 intel-ucode
