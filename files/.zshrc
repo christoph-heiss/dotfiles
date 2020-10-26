@@ -32,7 +32,6 @@ plugins=(
     docker-compose
     git
     git-extras
-    kubectl
     sudo
     z
 
@@ -70,7 +69,7 @@ export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/lib64/pkgconfig:$HOME/local/share/pkgconfig
 export GEM_HOME=$HOME/.gem
-PATH_ARRAY+="$GEM_HOME/bin"
+PATH_ARRAY+="$GEM_HOME/ruby/$(ruby --version | cut -c 6-8).0/bin"
 
 # Golang
 export GOPATH=$HOME/.go
@@ -111,8 +110,7 @@ alias sudo='sudo '
 alias yt-dl-mp3="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
 alias yt-dl-video="youtube-dl -iw -f 'bestvideo[height<=?1080,ext=mp4]+bestaudio[ext=m4a]/best'"
 alias weather='curl wttr.in'
-alias diff='diff -u --color=always'
-alias diff-dir='diff -w -r -u --color=always'
+alias diff='diff -u -p -r -N --color=auto'
 
 alias gcan!='git commit --amend --date now --reset-author'
 
