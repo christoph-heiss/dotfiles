@@ -18,7 +18,7 @@ brew upgrade
 
 
 # first, replace some tools with GNU versions
-brew install --with-default-names gnu-sed make grep gnu-indent gnu-tar
+brew install gnu-sed make grep gnu-tar
 
 # install build tools
 brew install --with-pcre git
