@@ -5,14 +5,7 @@
 # If not running interactively, do nothing
 [[ $- != *i* ]] && return
 
-PATH_ARRAY=(
-    "/var/lib/snapd/snap/bin"
-    "$HOME/.poetry/bin"
-    "$HOME/.yarn/bin"
-    "$HOME/.cargo/bin"
-    "$HOME/local/bin"
-)
-
+export PATH="$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME=spaceship
@@ -53,7 +46,7 @@ SPACESHIP_EXEC_TIME_ELAPSED=10
 
 SPACESHIP_EXIT_CODE_SYMBOL="✘ "
 SPACESHIP_EXIT_CODE_SHOW=true
-
+SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_TIME_SHOW=true
 
 export MANPATH="/usr/local/man:$MANPATH"
@@ -67,13 +60,13 @@ export HISTFILESIZE=$HISTSIZE
 
 export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
-export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/lib64/pkgconfig:$HOME/local/share/pkgconfig
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:/usr/local/lib/pkgconfig"
 export GEM_HOME=$HOME/.gem
-PATH_ARRAY+="$GEM_HOME/ruby/$(ruby --version | cut -c 6-8).0/bin"
+export PATH="$GEM_HOME/bin:$PATH"
 
 # Golang
 export GOPATH=$HOME/.go
-PATH_ARRAY+=$GOPATH/bin
+export PATH="$GOPATH/bin:$PATH"
 
 export GPG_TTY=$(tty)
 export WINEARCH=win32
@@ -81,13 +74,19 @@ export WINEARCH=win32
 export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=${DEVKITPRO}/devkitARM
 export DEVKITPPC=${DEVKITPRO}/devkitPPC
-PATH_ARRAY+="${DEVKITPRO}/tools/bin"
-PATH_ARRAY+="${DEVKITPPC}/bin"
-PATH_ARRAY+="${DEVKITARM}/bin"
+# export PATH="${DEVKITPPC}/bin:${DEVKITARM}/bin:${DEVKITPRO}/tools/bin:$PATH"
 
-[[ "`uname`" == "Darwin" ]] && PATH_ARRAY+="/usr/local/opt/grep/libexec/gnubin"
+export PATH="$HOME/cross/bin:$PATH"
 
-export PATH="${(j[:])PATH_ARRAY}:$PATH"
+if [[ "`uname`" == "Darwin" ]]; then
+    # Use some gnu tools by default on macOS
+    export PATH="\
+/usr/local/opt/grep/libexec/gnubin:\
+/usr/local/opt/gnu-sed/libexec/gnubin:\
+/usr/local/opt/gnu-tar/libexec/gnubin:\
+/usr/local/opt/make/libexec/gnubin:$PATH"
+
+fi
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell
