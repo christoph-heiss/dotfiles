@@ -111,6 +111,11 @@ alias yt-dl-video="youtube-dl -iw -f 'bestvideo[height<=?1080,ext=mp4]+bestaudio
 alias weather='curl wttr.in'
 alias diff='diff -u -p -r -N --color=auto'
 
+if [[ "`uname`" == "Darwin" ]]; then
+    alias disable-lidsleep='sudo pmset -a disablesleep 1'
+    alias enable-lidsleep='sudo pmset -a disablesleep 0'
+fi
+
 alias gcan!='git commit --amend --date now --reset-author'
 
 git-check-merge() {
