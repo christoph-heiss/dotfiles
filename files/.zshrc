@@ -100,6 +100,7 @@ alias yt-dl-mp3="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --
 alias yt-dl-video="youtube-dl -iw -f 'bestvideo[height<=?1080,ext=mp4]+bestaudio[ext=m4a]/best'"
 alias weather='curl wttr.in'
 alias diff='diff -u -p -r -N --color=auto'
+alias valgrind-full-check='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias gcan!='git commit --amend --date now --reset-author'
 
 git-check-merge() {
