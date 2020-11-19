@@ -67,5 +67,4 @@ yay -Scc --noconfirm
 usermod --append --groups wireshark $(whoami)
 
 ./common.sh
-cp -av files/.zsh_platform_linux $HOME/.zsh_platform
-
+cp -vp files/.zsh_platform_linux $HOME/.zsh_platform

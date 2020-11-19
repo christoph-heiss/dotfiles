@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-
+set -u
 
 if ! which brew > /dev/null; then
     # install brew
@@ -100,4 +100,5 @@ Host *
     IdentityFile ~/.ssh/id_rsa
 EOF
 
-source ./common.sh
+./common.sh
+cp -vp files/.zsh_platform_darwin $HOME/.zsh_platform

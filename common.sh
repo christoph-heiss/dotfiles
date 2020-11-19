@@ -18,13 +18,6 @@ nvm install node
 
 cp -vp files/.{zshrc,gitconfig,tmux.conf} $HOME/
 
-case `uname` in
-Linux )
-    cp -vp files/.zsh_platform_linux $HOME/;;
-Darwin )
-    cp -vp files/.zsh_platform_darwin $HOME/;;
-esac
-
 mkdir -p $HOME/.config/nvim
 cp -vp files/init.vim $HOME/.config/nvim/
 
