@@ -25,6 +25,13 @@ sudo sed -i \
 # Instruct makepkg to use (1.5 * count) cores while compiling
 sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$((`nproc` * 3 / 2))\"/g" /etc/makepkg.conf
 
+# Add nvidia modules to initramfs
+sudo sed -i \
+    's/^MODULES=(\(.*\))$/MODULES=(\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g' \
+    /etc/mkinitcpio.conf
+
+sudo cp -vp files/pacman-nvidia-initcpio.hook /etc/pacman.d/hooks/nvidia-initcpio.hook
+
 # Install yay
 if ! hash yay 2> /dev/null; then
     yay_tmpdir=$(mktemp -d)
