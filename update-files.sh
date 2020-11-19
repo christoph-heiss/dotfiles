@@ -12,6 +12,7 @@ cp -v \
     ~/.gitconfig \
     ~/.tmux.conf \
     ~/.config/nvim/init.vim \
+    ~/.config/htop/htoprc \
     files/
 
 
