@@ -19,6 +19,7 @@ moreutils
 neovim
 nmap
 p7zip
+pacutil
 perl-authen-sasl
 perl-mime-tools
 perl-net-smtp-ssl

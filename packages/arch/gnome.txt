@@ -4,6 +4,7 @@ cups-filters
 flatpak
 fontconfig
 ghostscript
+gthumb
 hplip
 libva-vdpau-driver
 nautilus-share
