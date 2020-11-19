@@ -72,21 +72,11 @@ export GPG_TTY=$(tty)
 export WINEARCH=win32
 
 export DEVKITPRO=/opt/devkitpro
-export DEVKITARM=${DEVKITPRO}/devkitARM
-export DEVKITPPC=${DEVKITPRO}/devkitPPC
+export DEVKITARM=$DEVKITPRO/devkitARM
+export DEVKITPPC=$DEVKITPRO/devkitPPC
 # export PATH="${DEVKITPPC}/bin:${DEVKITARM}/bin:${DEVKITPRO}/tools/bin:$PATH"
 
 export PATH="$HOME/cross/bin:$PATH"
-
-if [[ "`uname`" == "Darwin" ]]; then
-    # Use some gnu tools by default on macOS
-    export PATH="\
-/usr/local/opt/grep/libexec/gnubin:\
-/usr/local/opt/gnu-sed/libexec/gnubin:\
-/usr/local/opt/gnu-tar/libexec/gnubin:\
-/usr/local/opt/make/libexec/gnubin:$PATH"
-
-fi
 
 # Setup base16 themes
 export BASE16_SHELL=$HOME/.config/base16-shell
@@ -110,12 +100,6 @@ alias yt-dl-mp3="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --
 alias yt-dl-video="youtube-dl -iw -f 'bestvideo[height<=?1080,ext=mp4]+bestaudio[ext=m4a]/best'"
 alias weather='curl wttr.in'
 alias diff='diff -u -p -r -N --color=auto'
-
-if [[ "`uname`" == "Darwin" ]]; then
-    alias disable-lidsleep='sudo pmset -a disablesleep 1'
-    alias enable-lidsleep='sudo pmset -a disablesleep 0'
-fi
-
 alias gcan!='git commit --amend --date now --reset-author'
 
 git-check-merge() {
@@ -135,7 +119,6 @@ gen-rsa-keypair() {
     openssl genpkey -algorithm RSA -out "$1" -pkeyopt rsa_keygen_bits:4096
     openssl rsa -pubout -in "$1" -out "$1.pub"
 }
-
 
 source $HOME/.zsh_platform
 

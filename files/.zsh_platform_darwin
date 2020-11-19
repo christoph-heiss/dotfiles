@@ -2,8 +2,18 @@
 # ~/.zsh_platform for darwin
 #
 
+# Use some gnu tools by default on macOS
+export PATH="\
+/usr/local/opt/grep/libexec/gnubin:\
+/usr/local/opt/gnu-sed/libexec/gnubin:\
+/usr/local/opt/gnu-tar/libexec/gnubin:\
+/usr/local/opt/make/libexec/gnubin:\
+$PATH"
+
 alias lsblk='diskutil list'
 alias eject='diskutil eject'
+alias disable-lidsleep='sudo pmset -a disablesleep 1'
+alias enable-lidsleep='sudo pmset -a disablesleep 0'
 
 update_platform() {
     sudo softwareupdate -i -a || true
