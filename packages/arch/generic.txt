@@ -1,4 +1,3 @@
-apparmor
 avahi
 bat
 binwalk
@@ -11,10 +10,13 @@ dnsutils
 foldingathome
 git-extras
 gzip
+haveged
 htop
 informant
 intel-ucode
 iotop
+irqbalance
+lostfiles
 markdown
 moreutils
 neovim

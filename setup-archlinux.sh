@@ -74,5 +74,8 @@ yay -Scc --noconfirm
 # informant group for hook support without sudo
 usermod --append --groups wireshark informant $(whoami)
 
+# Enable any installed services
+sudo systemctl enable --now haveged irqbalance
+
 ./common.sh
 cp -vp files/.zsh_platform_linux $HOME/.zsh_platform
