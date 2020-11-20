@@ -12,6 +12,7 @@ foldingathome
 git-extras
 gzip
 htop
+informant
 intel-ucode
 iotop
 markdown

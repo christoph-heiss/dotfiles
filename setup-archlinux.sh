@@ -70,8 +70,9 @@ fi
 # Clean up package cache
 yay -Scc --noconfirm
 
-# Add user to wireshark group for capture support
-usermod --append --groups wireshark $(whoami)
+# wireshark group for capture support without sudo
+# informant group for hook support without sudo
+usermod --append --groups wireshark informant $(whoami)
 
 ./common.sh
 cp -vp files/.zsh_platform_linux $HOME/.zsh_platform
