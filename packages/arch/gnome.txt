@@ -4,6 +4,8 @@ cups-filters
 flatpak
 fontconfig
 ghostscript
+gnome-shell-extension-emoji-selector-git
+gnome-shell-extension-multi-monitors-add-on-git
 gthumb
 hplip
 libva-vdpau-driver
