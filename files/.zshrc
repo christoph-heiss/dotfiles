@@ -162,6 +162,9 @@ update() {
         rustup update
     fi
 
+    __update_log 'oh-my-zsh'
+    omz update
+
     __update_log 'oh-my-zsh custom stuff'
     update_omz_custom
 }
