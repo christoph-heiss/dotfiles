@@ -1,29 +1,17 @@
 #!/bin/bash
 # Copies all dotfiles to the repo.
 
-set -e
-set -u
+set -eu
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-
-cp -v \
-    ~/.zshrc \
+cp -av \
     ~/.gitconfig \
     ~/.tmux.conf \
-    ~/.config/nvim/init.vim \
+    ~/.zshrc \
     ~/.config/htop/htoprc \
+    ~/.config/nvim/init.vim \
     files/
 
-
-case `uname` in
-Linux )
-    cp -v ~/.zsh_platform files/.zsh_platform_linux
-
-    ;;
-
-Darwin )
-    cp -v ~/.zsh_platform files/.zsh_platform_darwin
-
-    ;;
-esac
+platform=$(uname | tr '[A-Z]' '[a-z]')
+cp -av ~/.zsh_platform files/.zsh_platform_$platform
