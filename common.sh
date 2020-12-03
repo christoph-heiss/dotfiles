@@ -16,7 +16,7 @@ nvm install node
 
 [[ ! -d $HOME/.oh-my-zsh ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-cp -vp files/.{zshrc,gitconfig,tmux.conf} $HOME/
+cp -vp files/.{alacritty.yml,gitconfig,tmux.conf,zshrc} $HOME/
 
 mkdir -p $HOME/.config/nvim
 cp -vp files/init.vim $HOME/.config/nvim/
