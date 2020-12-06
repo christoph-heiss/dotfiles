@@ -95,7 +95,6 @@ unsetopt share_history
 # Disable annoying correction prompt
 unsetopt correct_all
 
-alias sudo='sudo '
 alias yt-dl-mp3="youtube-dl -o '%(title)s.%(ext)s' -i -x --audio-quality 320K --audio-format mp3"
 alias yt-dl-video="youtube-dl -iw -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best'"
 alias weather='curl wttr.in'
