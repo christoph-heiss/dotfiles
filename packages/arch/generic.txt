@@ -28,6 +28,7 @@ perl-net-smtp-ssl
 python
 python-capstone
 python-pip
+rsync
 sleuthkit
 speedometer
 squashfs-tools
