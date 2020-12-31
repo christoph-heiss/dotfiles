@@ -2,8 +2,15 @@
 # ~/.zsh_platform for linux
 #
 
-
 alias open=xdg-open
+
+allow-any-ptrace() {
+    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope >/dev/null
+}
+
+deny-any-ptrace() {
+    echo 1 | sudo tee /proc/sys/kernel/yama/ptrace_scope >/dev/null
+}
 
 update_platform() {
     if [ -f /etc/arch-release ]; then
