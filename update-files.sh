@@ -13,5 +13,7 @@ cp -av \
     ~/.config/htop/htoprc \
     files/
 
+cp -av ~/.config/amp/config.yml files/amp.yml
+
 platform=$(uname | tr '[A-Z]' '[a-z]')
 cp -av ~/.zsh_platform files/.zsh_platform_$platform

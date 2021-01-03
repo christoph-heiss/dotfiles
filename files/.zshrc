@@ -57,7 +57,7 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 export HISTFILESIZE=$HISTSIZE
 
-export EDITOR=nvim
+export EDITOR=amp
 export GIT_EDITOR=$EDITOR
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:/usr/local/lib/pkgconfig"
 export GEM_HOME=$HOME/.gem
