@@ -42,8 +42,7 @@ brew install qemu
 brew install youtube-dl ffmpeg colordiff
 brew install unrar p7zip unzip
 brew install nmap ssh-copy-id thefuck
-brew install tree screenfetch cowsay htop
-brew install neovim bat
+brew install tree screenfetch cowsay htop bat
 brew install --with-functions --universal sqlite3
 brew install --with-nghttp2 --with-libssh2 curl
 

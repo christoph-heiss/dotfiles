@@ -19,7 +19,6 @@ irqbalance
 lostfiles
 markdown
 moreutils
-neovim
 nmap
 p7zip
 pacutil

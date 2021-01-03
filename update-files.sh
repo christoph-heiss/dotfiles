@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copies all dotfiles to the repo.
 
 set -eu
@@ -11,7 +11,6 @@ cp -av \
     ~/.tmux.conf \
     ~/.zshrc \
     ~/.config/htop/htoprc \
-    ~/.config/nvim/init.vim \
     files/
 
 platform=$(uname | tr '[A-Z]' '[a-z]')
