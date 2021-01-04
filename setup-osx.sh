@@ -22,7 +22,7 @@ brew install gnu-sed make grep gnu-tar diffutils
 
 # install build tools
 brew install --with-pcre git
-brew install pkg-config python3 wget
+brew install pkg-config python wget
 brew install autoconf autoconf-archive automake cmake
 
 # shell-related
@@ -47,7 +47,7 @@ brew install --with-functions --universal sqlite3
 brew install --with-nghttp2 --with-libssh2 curl
 
 # force-link keg-only formulas
-brew link --force unzip sqlite curl
+brew link --force unzip sqlite
 
 # GUI applications
 brew cask install quicklook-json
@@ -63,10 +63,6 @@ brew install homebrew/cask-fonts/font-roboto-mono-for-powerline
 
 # clean up
 brew cleanup -s --prune=0
-
-# make python packages from brew importable.
-mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
-echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
 if hash xcode-select > /dev/null; then
     xcode-select --install || echo
