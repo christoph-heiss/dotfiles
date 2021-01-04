@@ -6,14 +6,14 @@ set -eu
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 cp -av \
-    ~/.alacritty.yml \
-    ~/.gitconfig \
-    ~/.tmux.conf \
-    ~/.zshrc \
-    ~/.config/htop/htoprc \
+    $HOME/.alacritty.yml \
+    $HOME/.gitconfig \
+    $HOME/.tmux.conf \
+    $HOME/.zshrc \
+    $HOME/.config/htop/htoprc \
     files/
 
-cp -av ~/.config/amp/config.yml files/amp.yml
+cp -av $HOME/.config/amp/config.yml files/amp.yml
 
 platform=$(uname | tr '[A-Z]' '[a-z]')
-cp -av ~/.zsh_platform files/.zsh_platform_$platform
+cp -av $HOME/.zsh_platform files/.zsh_platform_$platform
