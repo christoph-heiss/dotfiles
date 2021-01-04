@@ -2,12 +2,13 @@
 # ~/.zsh_platform for darwin
 #
 
-# Use some gnu tools by default on macOS
+# Use some gnu/updated tools provided by brew by default
 export PATH="\
 /usr/local/opt/grep/libexec/gnubin:\
 /usr/local/opt/gnu-sed/libexec/gnubin:\
 /usr/local/opt/gnu-tar/libexec/gnubin:\
 /usr/local/opt/make/libexec/gnubin:\
+/usr/local/opt/curl/bin:\
 $PATH"
 
 alias lsblk='diskutil list'
