@@ -52,7 +52,6 @@ brew link --force unzip sqlite curl
 # GUI applications
 brew cask install quicklook-json
 brew cask install wireshark
-brew cask install filezilla
 brew cask install firefox-nightly
 brew cask install spotify vlc
 brew cask install insomniax
