@@ -79,3 +79,6 @@ sudo systemctl enable --now haveged irqbalance
 
 ./common.sh
 cp -vp files/.zsh_platform_linux $HOME/.zsh_platform
+
+mkdir -p $HOME/.config/amp
+cp -vp files/amp.yml $HOME/.config/amp/config.yml

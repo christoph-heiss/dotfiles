@@ -101,3 +101,6 @@ EOF
 
 ./common.sh
 cp -vp files/.zsh_platform_darwin $HOME/.zsh_platform
+
+mkdir -p $HOME/Library/Application\ Support/amp
+cp -vp files/amp.yml $HOME/Library/Application\ Support/amp/config.yml

@@ -16,9 +16,6 @@ nvm install node
 
 cp -vp files/.{alacritty.yml,gitconfig,tmux.conf,zshrc} $HOME/
 
-mkdir -p $HOME/.config/amp
-cp -vp files/amp.yml $HOME/.config/amp/config.yml
-
 mkdir -p $HOME/.config/htop
 cp -vp files/htoprc $HOME/.config/htop/
 
