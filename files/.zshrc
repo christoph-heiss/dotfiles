@@ -125,21 +125,15 @@ __update_log() {
     printf "\n 📦 \e[92mUpdating $1\e[0m\n"
 }
 
-update_omz_custom() {
-    setopt pushdsilent
-
-    pushd $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+__update_git_repo() {
+    pushd "$1"
     git pull
     popd
-
-    pushd $ZSH_CUSTOM/themes/spaceship-prompt
-    git pull
-    popd
-
-    unsetopt pushdsilent
 }
 
 update() {
+    setopt pushdsilent
+
     __update_log 'system packages'
     update_platform
 
@@ -163,6 +157,12 @@ update() {
     __update_log 'oh-my-zsh'
     omz update
 
-    __update_log 'oh-my-zsh custom stuff'
-    update_omz_custom
+    __update_log 'oh-my-zsh plugins'
+    __update_git_repo "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+    __update_git_repo "$ZSH_CUSTOM/themes/spaceship-prompt"
+
+    __update_log 'shell themes'
+    __update_git_repo "$HOME/.config/base16-shell"
+
+    unsetopt pushdsilent
 }
