@@ -16,9 +16,6 @@ nvm install node
 
 cp -vp files/.{alacritty.yml,gitconfig,tmux.conf,zshrc} $HOME/
 
-mkdir -p $HOME/.config/htop
-cp -vp files/htoprc $HOME/.config/htop/
-
 touch $HOME/.z
 
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom

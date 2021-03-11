@@ -12,7 +12,6 @@ cp -av \
     $HOME/.gitconfig \
     $HOME/.tmux.conf \
     $HOME/.zshrc \
-    $HOME/.config/htop/htoprc \
     files/
 
 if [[ $platform == darwin ]]; then
