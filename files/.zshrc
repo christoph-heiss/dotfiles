@@ -157,11 +157,9 @@ update() {
     __update_log 'oh-my-zsh'
     omz update
 
-    __update_log 'oh-my-zsh plugins'
+    __update_log 'oh-my-zsh extra stuff'
     __update_git_repo "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
     __update_git_repo "$ZSH_CUSTOM/themes/spaceship-prompt"
-
-    __update_log 'shell themes'
     __update_git_repo "$HOME/.config/base16-shell"
 
     unsetopt pushdsilent
