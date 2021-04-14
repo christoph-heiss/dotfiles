@@ -4,6 +4,8 @@
 	signingkey = 8D9166DCF6A28E57
 [commit]
 	gpgsign = true
+[format]
+	signoff = true
 [pull]
 	rebase = true
 [filter "lfs"]
