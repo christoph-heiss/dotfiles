@@ -2,6 +2,8 @@
 # ~/.zsh_platform for linux
 #
 
+export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+
 alias open=xdg-open
 
 allow-any-ptrace() {
