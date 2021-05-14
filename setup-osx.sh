@@ -26,7 +26,7 @@ brew install pkg-config python wget
 brew install autoconf autoconf-archive automake cmake
 
 # shell-related
-brew install zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+brew install zsh zsh-autosuggestions zsh-completions
 brew install open-completion brew-cask-completion pip-completion
 brew install tmux tmux-mem-cpu-load
 
