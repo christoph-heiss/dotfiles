@@ -32,10 +32,6 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-if [ "$(uname)" = "Darwin" ]; then
-    plugins=(osx "${plugins[@]}")
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 # Show low battery warning < 20% left
