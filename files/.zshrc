@@ -21,10 +21,15 @@ HIST_STAMPS=yyyy-mm-dd
 plugins=(
     cargo
     colored-man-pages
+    copybuffer
     docker
     docker-compose
     git
     git-extras
+    per-directory-history
+    ripgrep
+    rustup
+    safe-paste
     sudo
     z
 
