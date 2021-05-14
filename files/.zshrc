@@ -102,6 +102,11 @@ alias diff='diff -u -p -r -N --color=auto'
 alias valgrind-full-check='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias gcan!='git commit --amend --date now --reset-author'
 
+# Rust shortcuts
+alias cb='cargo build'
+alias cr='cargo run'
+alias ccl='cargo clippy'
+
 git-check-merge() {
     local output="$(git merge $1 --no-ff --no-commit 2>&1)"
 
