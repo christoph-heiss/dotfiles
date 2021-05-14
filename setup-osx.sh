@@ -54,7 +54,6 @@ brew cask install quicklook-json
 brew cask install wireshark
 brew cask install firefox-nightly
 brew cask install spotify vlc
-brew cask install insomniax
 brew cask install bettertouchtool || true
 brew cask isntall alt-tab
 
