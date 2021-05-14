@@ -21,6 +21,10 @@ open_mode:
     - "**/*.d"
 
 types:
+  h:
+    line_comment_prefix: //
+  S:
+    line_comment_prefix: "#"
   Makefile:
     syntax: Makefile
   .zshrc:
