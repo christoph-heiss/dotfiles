@@ -3,9 +3,6 @@
 set -e
 set -u
 
-# update pip
-pip3 install --upgrade setuptools
-
 [[ ! -d $HOME/.config/base16-shell ]] && git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell || true
 [[ ! -d $HOME/.nvm ]] && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash || true
 
