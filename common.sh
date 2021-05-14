@@ -4,11 +4,6 @@ set -e
 set -u
 
 [[ ! -d $HOME/.config/base16-shell ]] && git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell || true
-[[ ! -d $HOME/.nvm ]] && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash || true
-
-source $HOME/.nvm/nvm.sh
-nvm install node
-
 [[ ! -d $HOME/.oh-my-zsh ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 cp -vp files/.{alacritty.yml,gitconfig,tmux.conf,zshrc} $HOME/
