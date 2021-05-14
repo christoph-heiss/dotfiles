@@ -26,6 +26,8 @@ plugins=(
     docker-compose
     git
     git-extras
+    helm
+    kubectl
     per-directory-history
     ripgrep
     rustup
